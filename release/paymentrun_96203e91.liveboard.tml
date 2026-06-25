@@ -1,0 +1,212 @@
+obj_id: PaymentRun-96203e91
+liveboard:
+  name: Payment Run
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Payment Run
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      formulas:
+      - id: formula_message
+        name: message
+        expr: concat ( if ( [Is Address Invalid] ) then 'Bad Address, ' else '' , if ( [Is Account Overdrawn] ) then 'Overdrawn,
+          ' else '' , if ( [Is Reserves Exceeded] ) then 'Reserves, ' else '' , if ( [Is Blocked Vendor] ) then 'Blocked,
+          ' else '' , if ( [Is No Account] ) then 'No Account, ' else '' , if ( [Is Claim Verification Block] ) then 'Claim
+          Verification, ' else '' , if ( ifnull ( [Flag Ach] , '' ) != '' ) then concat ( 'ACH:' , [Flag Ach] , ', ' ) else
+          '' , if ( [Is Email Invalid] ) then 'Bad Email Address, ' else '' , if ( [Is Phone Invalid] ) then 'Bad Phone Number,
+          ' else '' , if ( ifnull ( [Previous Payment Method Id] , 0 ) > 0 ) then 'Payment Method changed from Digital Payment,
+          ' else '' )
+        was_auto_generated: false
+      search_query: '[Claim #] [Claimant Name] [Payee] [Payment Type] [Payment Method Desc] [Payment Amount] [Policy Number]
+        [Insured Name] [Payment Run Date] [Payment Run Date].daily [Processed Date] [Processed Date].daily [Examiner Code]
+        [formula_message] [Good Payment] [OFac] [Payment Id]'
+      answer_columns:
+      - name: 'Claim #'
+      - name: Claimant Name
+      - name: Day(Payment Run Date)
+      - name: Day(Processed Date)
+      - name: Examiner Code
+      - name: Good Payment
+      - name: Insured Name
+      - name: OFac
+      - name: Payee
+      - name: Payment Id
+        custom_name: Payment Id
+        dynamic_title: Payment Id
+      - name: Payment Method Desc
+      - name: Payment Type
+      - name: Policy Number
+      - name: Total Payment Amount
+      - name: message
+      table:
+        table_columns:
+        - column_id: 'Claim #'
+          show_headline: false
+        - column_id: Claimant Name
+          show_headline: false
+        - column_id: Day(Payment Run Date)
+          show_headline: false
+        - column_id: Day(Processed Date)
+          show_headline: false
+        - column_id: Examiner Code
+          show_headline: false
+        - column_id: Good Payment
+          show_headline: false
+        - column_id: Insured Name
+          show_headline: false
+        - column_id: OFac
+          show_headline: false
+        - column_id: Payee
+          show_headline: false
+        - column_id: Payment Id
+          show_headline: false
+        - column_id: Payment Method Desc
+          show_headline: false
+        - column_id: Payment Type
+          show_headline: false
+        - column_id: Policy Number
+          show_headline: false
+        - column_id: Total Payment Amount
+          show_headline: false
+        - column_id: message
+          show_headline: false
+        ordered_column_ids:
+        - Claimant Name
+        - Payee
+        - Payment Type
+        - Payment Method Desc
+        - Policy Number
+        - Insured Name
+        - Day(Payment Run Date)
+        - Day(Processed Date)
+        - Examiner Code
+        - message
+        - Good Payment
+        - OFac
+        - Payment Id
+        - 'Claim #'
+        - Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Day(Payment Run Date)","Payment Id","Claim #","Examiner
+          Code","Claimant Name","Payee","Payment Type","Payment Method Desc","Total Payment Amount","Policy Number","Insured
+          Name","Day(Processed Date)","message","Good Payment","OFac"]}'
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: 'Claim #'
+        - column_id: Claimant Name
+        - column_id: Day(Payment Run Date)
+        - column_id: Day(Processed Date)
+        - column_id: Examiner Code
+        - column_id: Good Payment
+        - column_id: Insured Name
+        - column_id: Measure names
+          type: MEASURE_NAMES
+        - column_id: OFac
+        - column_id: Payee
+        - column_id: Payment Id
+        - column_id: Payment Method Desc
+        - column_id: Payment Type
+        - column_id: Policy Number
+        - column_id: Total Payment Amount
+        - column_id: message
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+          {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+          true}},"columnProperties": [{"columnId": "Claim #","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant Name","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Payee","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Payment Type","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Payment Method Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Policy Number","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Insured
+          Name","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Day(Payment Run Date)","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Day(Processed
+          Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Total Payment Amount","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure
+          names","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Measure values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}}],"axisProperties": [{"id": "6f8219c9-91d0-4565-9036-46e6f2214879","properties":
+          {"axisType": "Y","linkedColumns": ["Total Payment Amount"],"isOpposite": false}},{"id": "546252b0-62d4-469e-9fec-bb211fd9cef9","properties":
+          {"axisType": "X","linkedColumns": ["Claim #"]}}]}'
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: rows
+            columns:
+            - 'Claim #'
+            mode: COLUMN_DRIVEN
+          - key: values
+            columns:
+            - Total Payment Amount
+            mode: COLUMN_DRIVEN
+          - key: columns
+            columns:
+            - Measure names
+            mode: COLUMN_DRIVEN
+          - key: split-by-color
+            mode: COLUMN_DRIVEN
+        custom_visual_props: '{}'
+      display_mode: TABLE_MODE
+      dynamic_name: Payment Run
+    viz_guid: c4c2f5f2-c983-414e-96f7-3fe949310e3c
+  filters:
+  - column:
+    - Good Payment
+    is_mandatory: false
+    is_single_value: true
+    display_name: ''
+  - column:
+    - OFac
+    oper: in
+    values:
+    - 'false'
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      y: 0
+      height: 8
+      width: 12
+  ordered_chips:
+  - name: Good Payment
+    type: FILTER
+  - name: OFac
+    type: FILTER
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: 'false'
+    - name: hide_group_description
+      value: 'true'
+    - name: hide_group_tile_description
+      value: 'false'
+    - name: hide_tile_description
+      value: 'false'
+    - name: kpi_hero_font_size
+      value: M

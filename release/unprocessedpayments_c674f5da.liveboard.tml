@@ -1,0 +1,182 @@
+obj_id: UnprocessedPayments-c674f5da
+liveboard:
+  name: Unprocessed Payments
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total Payment Amount by Office Code, Manager, Examiner Code, Payment Id, Payment Run Key, Claim Number, Claimant
+        First And Last Name, Payee Name, Payment Type Id, Payment Type, Payment Method Id, Payment Method Desc, Policy Number,
+        Insured Name, Is Address Invalid, Is Account Overdrawn, Is Reserves Exceeded, Is Blocked Vendor, Is No Account, Is
+        Claim Verification Block, Is Email Invalid, Is Phone Invalid, Daily From Date, Daily Through Date, Daily Payment Entry
+        Date, Daily Invoice Received Date
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      search_query: '[Office Code] [Manager] [Examiner Code] [Payment Id] [Payment Run Key] [Claim Number] [Claimant First
+        And Last Name] [Payee Name] [Payment Type Id] [Payment Type] [Payment Method Id] [Payment Method Desc] [Payment Amount]
+        [Policy Number] [Insured Name] [Is Address Invalid] [Is Account Overdrawn] [Is Reserves Exceeded] [Is Blocked Vendor]
+        [Is No Account] [Is Claim Verification Block] [Is Email Invalid] [Is Phone Invalid] [From Date] [From Date].daily
+        [Through Date] [Through Date].daily [Payment Entry Date] [Payment Entry Date].daily [Invoice Received Date] [Invoice
+        Received Date].daily'
+      answer_columns:
+      - name: Claim Number
+      - name: Claimant First And Last Name
+      - name: Day(From Date)
+      - name: Day(Invoice Received Date)
+      - name: Day(Payment Entry Date)
+      - name: Day(Through Date)
+      - name: Examiner Code
+      - name: Insured Name
+      - name: Is Account Overdrawn
+      - name: Is Address Invalid
+      - name: Is Blocked Vendor
+      - name: Is Claim Verification Block
+      - name: Is Email Invalid
+      - name: Is No Account
+      - name: Is Phone Invalid
+      - name: Is Reserves Exceeded
+      - name: Manager
+      - name: Office Code
+      - name: Payee Name
+      - name: Payment Id
+      - name: Payment Method Desc
+      - name: Payment Method Id
+      - name: Payment Run Key
+      - name: Payment Type
+      - name: Payment Type Id
+      - name: Policy Number
+      - name: Total Payment Amount
+      table:
+        table_columns:
+        - column_id: Claim Number
+          show_headline: false
+        - column_id: Claimant First And Last Name
+          show_headline: false
+        - column_id: Day(From Date)
+          show_headline: false
+        - column_id: Day(Invoice Received Date)
+          show_headline: false
+        - column_id: Day(Payment Entry Date)
+          show_headline: false
+        - column_id: Day(Through Date)
+          show_headline: false
+        - column_id: Examiner Code
+          show_headline: false
+        - column_id: Insured Name
+          show_headline: false
+        - column_id: Is Account Overdrawn
+          show_headline: false
+        - column_id: Is Address Invalid
+          show_headline: false
+        - column_id: Is Blocked Vendor
+          show_headline: false
+        - column_id: Is Claim Verification Block
+          show_headline: false
+        - column_id: Is Email Invalid
+          show_headline: false
+        - column_id: Is No Account
+          show_headline: false
+        - column_id: Is Phone Invalid
+          show_headline: false
+        - column_id: Is Reserves Exceeded
+          show_headline: false
+        - column_id: Manager
+          show_headline: false
+        - column_id: Office Code
+          show_headline: false
+        - column_id: Payee Name
+          show_headline: false
+        - column_id: Payment Id
+          show_headline: false
+        - column_id: Payment Method Desc
+          show_headline: false
+        - column_id: Payment Method Id
+          show_headline: false
+        - column_id: Payment Run Key
+          show_headline: false
+        - column_id: Payment Type
+          show_headline: false
+        - column_id: Payment Type Id
+          show_headline: false
+        - column_id: Policy Number
+          show_headline: false
+        - column_id: Total Payment Amount
+          show_headline: false
+        ordered_column_ids:
+        - Office Code
+        - Manager
+        - Examiner Code
+        - Payment Id
+        - Payment Run Key
+        - Claim Number
+        - Claimant First And Last Name
+        - Payee Name
+        - Payment Type Id
+        - Payment Type
+        - Payment Method Id
+        - Payment Method Desc
+        - Policy Number
+        - Insured Name
+        - Is Address Invalid
+        - Is Account Overdrawn
+        - Is Reserves Exceeded
+        - Is Blocked Vendor
+        - Is No Account
+        - Is Claim Verification Block
+        - Is Email Invalid
+        - Is Phone Invalid
+        - Day(From Date)
+        - Day(Through Date)
+        - Day(Payment Entry Date)
+        - Day(Invoice Received Date)
+        - Total Payment Amount
+        client_state: ''
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Claim Number
+        - column_id: Claimant First And Last Name
+        - column_id: Day(From Date)
+        - column_id: Day(Invoice Received Date)
+        - column_id: Day(Payment Entry Date)
+        - column_id: Day(Through Date)
+        - column_id: Examiner Code
+        - column_id: Insured Name
+        - column_id: Is Account Overdrawn
+        - column_id: Is Address Invalid
+        - column_id: Is Blocked Vendor
+        - column_id: Is Claim Verification Block
+        - column_id: Is Email Invalid
+        - column_id: Is No Account
+        - column_id: Is Phone Invalid
+        - column_id: Is Reserves Exceeded
+        - column_id: Manager
+        - column_id: Office Code
+        - column_id: Payee Name
+        - column_id: Payment Id
+        - column_id: Payment Method Desc
+        - column_id: Payment Method Id
+        - column_id: Payment Run Key
+        - column_id: Payment Type
+        - column_id: Payment Type Id
+        - column_id: Policy Number
+        - column_id: Total Payment Amount
+        client_state: ''
+      display_mode: TABLE_MODE
+    viz_guid: 4bcb6491-faf1-4099-8147-a36e52d710e7
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+  parameter_overrides:
+  - key: 84c3b537-b9a2-409b-9b49-cc430bcf563a
+    value:
+      name: Claims - Payments::ClaimantFirstName
+  - key: 0848b399-27bd-4865-91f7-8352d4cf2d10
+    value:
+      name: Claims - Payments::ClaimantLastName
+  ordered_chips:
+  - name: Claims - Payments::ClaimantFirstName
+    type: PARAMETER
+  - name: Claims - Payments::ClaimantLastName
+    type: PARAMETER

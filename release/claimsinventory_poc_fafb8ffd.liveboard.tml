@@ -1,0 +1,227 @@
+obj_id: ClaimsInventory-POC-fafb8ffd
+liveboard:
+  name: Claims Reports
+  description: Homes for all Claims reports. 1 tab per report
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Claims Inventory
+      tables:
+      - id: Claims - Claims Inventory
+        name: Claims - Claims Inventory
+        obj_id: Claims-ClaimsInventory-be98069b
+      search_query: '[Office] [Manager] [Examiner] [Claimant Type] [Ending Inventory] [New Claims] [Closed Claims] [Reopen]
+        [Transfer IN] [Transfer OUT] sort by [Office] sort by [Manager] sort by [Examiner] [Closing Ratio]'
+      answer_columns:
+      - name: Claimant Type
+      - name: Closed Claims
+      - name: Closing Ratio
+      - name: Ending Inventory
+      - name: Examiner
+        sort_info:
+          category: ALPHA
+      - name: Manager
+        sort_info:
+          category: ALPHA
+      - name: New Claims
+      - name: Office
+        sort_info:
+          category: ALPHA
+      - name: Reopen
+      - name: Transfer IN
+      - name: Transfer OUT
+      table:
+        table_columns:
+        - column_id: Claimant Type
+          show_headline: false
+        - column_id: Closed Claims
+          show_headline: false
+        - column_id: Closing Ratio
+          show_headline: false
+        - column_id: Ending Inventory
+          show_headline: false
+        - column_id: Examiner
+          show_headline: false
+        - column_id: Manager
+          show_headline: false
+        - column_id: New Claims
+          show_headline: false
+        - column_id: Office
+          show_headline: false
+        - column_id: Reopen
+          show_headline: false
+        - column_id: Transfer IN
+          show_headline: false
+        - column_id: Transfer OUT
+          show_headline: false
+        ordered_column_ids:
+        - Office
+        - Manager
+        - Examiner
+        - Claimant Type
+        - Ending Inventory
+        - New Claims
+        - Closed Claims
+        - Reopen
+        - Transfer IN
+        - Transfer OUT
+        - Closing Ratio
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Office","Manager","Examiner","Claimant Type","Ending
+          Inventory","New Claims","Transfer IN","Reopen","Transfer OUT","Closed Claims"],"columnProperties": [{"columnId":
+          "Office","columnProperty": {"isHidden": false}},{"columnId": "Manager","columnProperty": {"isHidden": false}},{"columnId":
+          "Examiner","columnProperty": {"isHidden": false}},{"columnId": "Claimant Type","columnProperty": {"isHidden": false}},{"columnId":
+          "Ending Inventory","columnProperty": {"isHidden": false}},{"columnId": "New Claims","columnProperty": {"isHidden":
+          false}},{"columnId": "Closed Claims","columnProperty": {"isHidden": false}},{"columnId": "Reopen","columnProperty":
+          {"isHidden": false}},{"columnId": "Transfer IN","columnProperty": {"isHidden": false}},{"columnId": "Transfer OUT","columnProperty":
+          {"isHidden": false}}]}'
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Claimant Type
+        - column_id: Closed Claims
+        - column_id: Closing Ratio
+        - column_id: Ending Inventory
+        - column_id: Examiner
+        - column_id: Manager
+        - column_id: Measure names
+          type: MEASURE_NAMES
+        - column_id: New Claims
+        - column_id: Office
+        - column_id: Reopen
+        - column_id: Transfer IN
+        - column_id: Transfer OUT
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotState": {"fields": [{"dataField":
+          "Measure names","sortBy": "value","sortBySummaryField": "Measure names","sortOrder": "","expanded": true,"area":
+          "column"},{"dataField": "Office","sortBy": "value","sortBySummaryField": "","sortOrder": "asc","expanded": true,"area":
+          "row"},{"dataField": "Manager","sortBy": "value","sortBySummaryField": "Manager","sortOrder": "asc","expanded":
+          false,"area": "row"},{"dataField": "Examiner","sortBy": "value","sortBySummaryField": "Examiner","sortOrder": "asc","expanded":
+          false,"area": "row"},{"dataField": "Claimant Type","sortBy": "value","sortBySummaryField": "","sortOrder": "","expanded":
+          true,"area": "row"}]},"isStackedAsPercent": false,"pivotSummariesState": {}}},"columnProperties": [{"columnId":
+          "Office","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Manager","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Examiner","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Claimant Type","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Measure values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Ending Inventory","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "New Claims","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Transfer IN","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Reopen","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Transfer OUT","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Closed Claims","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Closing Ratio","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}}],"axisProperties": [{"id": "72042715-81ae-44ef-ab7d-dbbfaef4849f","properties":
+          {"axisType": "Y","linkedColumns": ["Measure values"],"isOpposite": false}},{"id": "d458c188-13fd-4261-8d39-40b5575ab5d6","properties":
+          {"axisType": "X","linkedColumns": ["Office","Manager","Examiner","Claimant Type"]}}]}'
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: rows
+            columns:
+            - Office
+            - Manager
+            - Examiner
+            - Claimant Type
+            mode: COLUMN_DRIVEN
+          - key: values
+            columns:
+            - Ending Inventory
+            - New Claims
+            - Transfer IN
+            - Reopen
+            - Transfer OUT
+            - Closed Claims
+            - Closing Ratio
+            mode: COLUMN_DRIVEN
+          - key: columns
+            columns:
+            - Measure names
+            mode: COLUMN_DRIVEN
+          - key: split-by-color
+            mode: COLUMN_DRIVEN
+        custom_visual_props: '{"clientState":"","axisVisualProps":{},"columnVisualProps":{"Office":{"column-sort":{}},"Manager":{"column-sort":{}},"Examiner":{"column-sort":{}},"Claimant
+          Type":{"column-sort":{}},"Ending Inventory":{"column-color":"#2E75F0"},"New Claims":{"column-color":"#48D1E0"},"Transfer
+          IN":{"column-color":"#FCC838"},"Reopen":{"column-color":"#06BF7F"},"Transfer OUT":{"column-color":"#8C62F5"},"Closed
+          Claims":{"column-color":"#FF8142"},"Closing Ratio":{"column-color":"#747E8C"}},"displayVisualProps":{"values":{},"totals-summary":{"show-grand-totals":{"show-row-grand-totals":false,"show-column-grand-totals":true},"show-sub-totals":{"show-row-sub-totals":false,"show-column-sub-totals":true},"totals-position":{}},"heatmap-mode-section":{"heatmap-mode-enable":false,"includeTotalDomain":false,"heatmap-mode-radio":"Background"},"pagination":{"pagination-enable":false}},"dataLabelVisualProps":{},"legendVisualProps":{"legend":{"show-legend":false,"position":"Right"}},"tooltipVisualProps":{"global-tooltip":{"tooltipBackground":{"backgroundColor":"#1d232f","borderColor":"#1d232f","backgroundOpacity":"100"},"tooltip-column-name":{"size":"12","color":"#ffffff","style":[]},"tooltip-column-value":{"size":"12","color":"#ffffff","style":[]}}}}'
+      display_mode: CHART_MODE
+      dynamic_name: Claims Inventory
+    viz_guid: 5da5edc2-6979-4f27-9e2b-6f6b90350a34
+  filters:
+  - column:
+    - Insurance Line Code
+    oper: in
+    values:
+    - WC
+    is_mandatory: false
+    is_single_value: true
+    display_name: ''
+  - column:
+    - Office
+    oper: in
+    values:
+    - Illinois Claims Staff
+    is_mandatory: false
+    is_single_value: true
+    display_name: ''
+  layout:
+    tabs:
+    - name: Claims Inventory
+      description: ''
+      tiles:
+      - visualization_id: Viz_1
+        x: 0
+        y: 0
+        height: 10
+        width: 12
+      id: 4f96dc99-bc7d-4625-860c-c32cee4429eb
+    - name: Check Register
+      description: ''
+      id: 29d02287-44ea-4074-bc89-2d4765e8bee2
+  parameter_overrides:
+  - key: 9e0b0993-10e0-45d9-9472-20b3be546d2e
+    value:
+      name: Claims - Claims Inventory::Begin Date
+  - key: d4c1baa2-1f36-4024-8106-aeff04154f6b
+    value:
+      name: Claims - Claims Inventory::End Date
+      override_value: 05/18/2026
+  ordered_chips:
+  - name: Claims - Claims Inventory::Begin Date
+    type: PARAMETER
+  - name: Claims - Claims Inventory::End Date
+    type: PARAMETER
+  - name: Insurance Line Code
+    type: FILTER
+  - name: Office
+    type: FILTER
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: 'false'
+    - name: hide_group_description
+      value: 'true'
+    - name: hide_group_tile_description
+      value: 'false'
+    - name: hide_tile_description
+      value: 'false'
+    - name: kpi_hero_font_size
+      value: M

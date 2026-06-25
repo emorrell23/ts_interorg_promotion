@@ -1,0 +1,237 @@
+obj_id: CheckRegister-df91adf3
+liveboard:
+  name: Check Register
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Check Register
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      formulas:
+      - id: formula_Insurer Total Amount
+        name: Insurer Total Amount
+        expr: group_sum ( [Payment Amount] , [Insurer Code] )
+        was_auto_generated: false
+      - id: formula_Insurer Total Check Count
+        name: Insurer Total Check Count
+        expr: group_count ( [Check Number] , [Insurer Code] )
+        was_auto_generated: false
+      search_query: '[Insurer Code] [Check Number] [Effective Check Date] [Effective Check Date].daily [Payment Type] [Claim
+        Number] [Claim #] [Claimant Name] [Payee] [Payment Amount] [Processed Date] [Processed Date].daily [Line Of Business
+        Desc] [Account Number] [Is Jurisdiction CA] [Check Number] != ''{null}'' [Check Number] != ''{empty}'' [Payment Method
+        Id] = 10 [Payment Run Key] [Entity Id] sort by [Insurer Code] sort by [Check Number] sort by [Account Number] sort
+        by [Entity Id] [Jurisdiction Code] [formula_Insurer Total Amount] [formula_Insurer Total Check Count]'
+      answer_columns:
+      - name: Account Number
+        sort_info:
+          category: DEFAULT
+      - name: Check Number
+        sort_info:
+          category: DEFAULT
+      - name: 'Claim #'
+      - name: Claim Number
+      - name: Claimant Name
+      - name: Day(Effective Check Date)
+      - name: Day(Processed Date)
+      - name: Entity Id
+        sort_info:
+          category: DEFAULT
+      - name: Insurer Code
+        sort_info:
+          category: DEFAULT
+      - name: Insurer Total Amount
+      - name: Insurer Total Check Count
+      - name: Is Jurisdiction CA
+      - name: Jurisdiction Code
+      - name: Line Of Business Desc
+      - name: Payee
+      - name: Payment Run Key
+      - name: Payment Type
+      - name: Total Payment Amount
+      table:
+        table_columns:
+        - column_id: Account Number
+          show_headline: false
+        - column_id: Check Number
+          show_headline: false
+        - column_id: 'Claim #'
+          show_headline: false
+        - column_id: Claim Number
+          show_headline: false
+        - column_id: Claimant Name
+          show_headline: false
+        - column_id: Day(Effective Check Date)
+          show_headline: false
+        - column_id: Day(Processed Date)
+          show_headline: false
+        - column_id: Entity Id
+          show_headline: false
+        - column_id: Insurer Code
+          show_headline: false
+        - column_id: Insurer Total Amount
+          show_headline: false
+        - column_id: Insurer Total Check Count
+          show_headline: false
+        - column_id: Is Jurisdiction CA
+          show_headline: false
+        - column_id: Jurisdiction Code
+          show_headline: false
+        - column_id: Line Of Business Desc
+          show_headline: false
+        - column_id: Payee
+          show_headline: false
+        - column_id: Payment Run Key
+          show_headline: false
+        - column_id: Payment Type
+          show_headline: false
+        - column_id: Total Payment Amount
+          show_headline: false
+        ordered_column_ids:
+        - Insurer Code
+        - Check Number
+        - Day(Effective Check Date)
+        - Payment Type
+        - Claim Number
+        - Claimant Name
+        - Payee
+        - Day(Processed Date)
+        - Line Of Business Desc
+        - Account Number
+        - Is Jurisdiction CA
+        - Payment Run Key
+        - Entity Id
+        - Jurisdiction Code
+        - 'Claim #'
+        - Total Payment Amount
+        - Insurer Total Amount
+        - Insurer Total Check Count
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "Insurer Code","width": 143.35324096679688}],"orderedColumnIds":
+          ["Insurer Code","Check Number","Day(Effective Check Date)","Payment Type","Claim Number","Claimant Name","Payee","Day(Processed
+          Date)","Line Of Business Desc","Jurisdiction Code","Claim #","Payment Run Key","Total Payment Amount","Account Number","Entity
+          Id","Is Jurisdiction CA"],"columnProperties": [{"columnId": "Insurer Code","columnProperty": {}},{"columnId": "Check
+          Number","columnProperty": {}},{"columnId": "Day(Effective Check Date)","columnProperty": {}},{"columnId": "Payment
+          Type","columnProperty": {}},{"columnId": "Claim Number","columnProperty": {}},{"columnId": "Claimant Name","columnProperty":
+          {}},{"columnId": "Payee","columnProperty": {}},{"columnId": "Day(Processed Date)","columnProperty": {}},{"columnId":
+          "Line Of Business Desc","columnProperty": {}},{"columnId": "Account Number","columnProperty": {}},{"columnId": "Claim
+          #","columnProperty": {}},{"columnId": "Total Payment Amount","columnProperty": {}}]}'
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Account Number
+        - column_id: Check Number
+        - column_id: 'Claim #'
+        - column_id: Claim Number
+        - column_id: Claimant Name
+        - column_id: Day(Effective Check Date)
+        - column_id: Day(Processed Date)
+        - column_id: Entity Id
+        - column_id: Insurer Code
+        - column_id: Insurer Total Amount
+        - column_id: Insurer Total Check Count
+        - column_id: Is Jurisdiction CA
+        - column_id: Jurisdiction Code
+        - column_id: Line Of Business Desc
+        - column_id: Payee
+        - column_id: Payment Run Key
+        - column_id: Payment Type
+        - column_id: Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"dataFieldArea": "column"}},"columnProperties": [{"columnId": "Insurer Code","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Check
+          Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Day(Effective Check Date)","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Payment
+          Type","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Claim Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claim #","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant
+          Name","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Payee","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Day(Processed Date)","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Line Of Business Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Account Number","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Total Payment Amount","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure
+          values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Payment Run Key","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Entity Id","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Jurisdiction
+          Code","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Is Jurisdiction CA","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}}],"axisProperties": [{"id": "2b176f5e-da52-45f6-8e46-c5031900d1a1","properties":
+          {"axisType": "X"}}]}'
+        custom_visual_props: '{}'
+      display_mode: TABLE_MODE
+      dynamic_name: Check Register
+    viz_guid: 7edf921b-440b-4362-995f-ab1e53770d3d
+  filters:
+  - column:
+    - Processed Date
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Line Of Business Code
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Is Jurisdiction CA
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      y: 0
+      height: 8
+      width: 12
+  ordered_chips:
+  - name: Processed Date
+    type: FILTER
+  - name: Line Of Business Code
+    type: FILTER
+  - name: Is Jurisdiction CA
+    type: FILTER
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: 'false'
+    - name: hide_group_description
+      value: 'true'
+    - name: hide_group_tile_description
+      value: 'false'
+    - name: hide_tile_description
+      value: 'false'
+    - name: kpi_hero_font_size
+      value: M

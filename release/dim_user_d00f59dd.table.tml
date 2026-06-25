@@ -1,0 +1,180 @@
+obj_id: DIM_USER-d00f59dd
+table:
+  name: DIM_USER
+  db: ${ts_db}
+  schema: ${ts_schema}
+  db_table: DIM_CXP__USER
+  connection:
+    name: Data Hub
+    obj_id: DataHub-f9c38b07
+  columns:
+  - name: USER_KEY
+    db_column_name: USER_KEY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: USER_NAME
+    db_column_name: USER_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: USER_ID
+    db_column_name: USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MANAGER
+    db_column_name: MANAGER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRST_NAME
+    db_column_name: FIRST_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_NAME
+    db_column_name: LAST_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: TITLE
+    db_column_name: TITLE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OFFICE_ID
+    db_column_name: OFFICE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: OFFICE_DESC
+    db_column_name: OFFICE_DESC
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OFFICE_CODE
+    db_column_name: OFFICE_CODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OFFICE_IS_ACTIVE
+    db_column_name: OFFICE_IS_ACTIVE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: OFFICE_CITY
+    db_column_name: OFFICE_CITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OFFICE_STATE
+    db_column_name: OFFICE_STATE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ASPNET_USER_ID
+    db_column_name: ASPNET_USER_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LOWERED_USER_NAME
+    db_column_name: LOWERED_USER_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: USER_NAME_NORMALIZED
+    db_column_name: USER_NAME_NORMALIZED
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_ANONYMOUS
+    db_column_name: IS_ANONYMOUS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_APPROVED
+    db_column_name: IS_APPROVED
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_LOCKED_OUT
+    db_column_name: IS_LOCKED_OUT
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: MEMBERSHIP_CREATE_DATE
+    db_column_name: MEMBERSHIP_CREATE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: LAST_LOGIN_DATE
+    db_column_name: LAST_LOGIN_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: EXTENSION
+    db_column_name: EXTENSION
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: WORK_PHONE
+    db_column_name: WORK_PHONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_LINE_OF_BUSINESS_ID
+    db_column_name: DEFAULT_LINE_OF_BUSINESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PAYMENT_AUTHORIZATION_LEVEL
+    db_column_name: PAYMENT_AUTHORIZATION_LEVEL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SOURCE_UPDATED_TS
+    db_column_name: SOURCE_UPDATED_TS
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  properties:
+    spotter_config:
+      is_spotter_enabled: false

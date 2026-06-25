@@ -1,0 +1,60 @@
+obj_id: TotalCountbyClaimNumberDailyLossDate-63643295
+answer:
+  name: Total Count by Claim Number, Daily Loss Date
+  tables:
+  - id: Claims - Payments
+    name: Claims - Payments
+    obj_id: Claims-ab0d4cf0
+  formulas:
+  - id: formula_Total Count
+    name: Total Count
+    expr: count  ( [Claim Number] )
+    was_auto_generated: false
+  search_query: '[Claim Number] [Loss Date] [Loss Date].daily [formula_Total Count] sort by [formula_Total Count] descending
+    [formula_Total Count] > 1'
+  answer_columns:
+  - name: Claim Number
+  - name: Day(Loss Date)
+  - name: Total Count
+    sort_info:
+      category: DEFAULT
+  table:
+    table_columns:
+    - column_id: Claim Number
+      show_headline: false
+    - column_id: Day(Loss Date)
+      show_headline: false
+    - column_id: Total Count
+      show_headline: false
+    ordered_column_ids:
+    - Claim Number
+    - Day(Loss Date)
+    - Total Count
+    client_state: ''
+    client_state_v2: '{"tableVizPropVersion": "V1"}'
+  chart:
+    type: KPI
+    chart_columns:
+    - column_id: Claim Number
+    - column_id: Day(Loss Date)
+    - column_id: Total Count
+    axis_configs:
+    - y:
+      - Claim Number
+    client_state: ''
+    client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+      {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+      true}},"columnProperties": [{"columnId": "Claim Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Day(Loss Date)","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+      true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty":
+      {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+      true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId":
+      "Measure values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+      "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+      true,"showPreviousValue": true}}}],"axisProperties": [{"id": "d8ab45c9-6253-4143-af98-1c429a3dcc7b","properties": {"axisType":
+      "Y","linkedColumns": ["Claim Number"],"isOpposite": false}},{"id": "c9ab6dd6-27b1-4bae-867c-763517318d45","properties":
+      {"axisType": "X"}}]}'
+  display_mode: TABLE_MODE
+  dynamic_name: Total Count by Claim Number, Daily Loss Date

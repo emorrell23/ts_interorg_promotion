@@ -1,0 +1,141 @@
+obj_id: EndingInventoryNewClaimsClosedClaimsReopenTransferINTra-260348d4
+answer:
+  name: Pivot PS
+  tables:
+  - id: Claims - Claims Inventory
+    name: Claims - Claims Inventory
+    obj_id: Claims-ClaimsInventory-be98069b
+  search_query: '[Office] [Manager] [Examiner] [Claimant Type] [Ending Inventory] [New Claims] [Closed Claims] [Reopen] [Transfer
+    IN] [Transfer OUT] sort by [Office] sort by [Manager] sort by [Examiner] [Closing Ratio]'
+  answer_columns:
+  - name: Claimant Type
+  - name: Closed Claims
+  - name: Closing Ratio
+  - name: Ending Inventory
+  - name: Examiner
+    sort_info:
+      category: ALPHA
+  - name: Manager
+    sort_info:
+      category: ALPHA
+  - name: New Claims
+  - name: Office
+    sort_info:
+      category: ALPHA
+  - name: Reopen
+  - name: Transfer IN
+  - name: Transfer OUT
+  table:
+    table_columns:
+    - column_id: Claimant Type
+      show_headline: false
+    - column_id: Closed Claims
+      show_headline: false
+    - column_id: Closing Ratio
+      show_headline: false
+    - column_id: Ending Inventory
+      show_headline: false
+    - column_id: Examiner
+      show_headline: false
+    - column_id: Manager
+      show_headline: false
+    - column_id: New Claims
+      show_headline: false
+    - column_id: Office
+      show_headline: false
+    - column_id: Reopen
+      show_headline: false
+    - column_id: Transfer IN
+      show_headline: false
+    - column_id: Transfer OUT
+      show_headline: false
+    ordered_column_ids:
+    - Office
+    - Manager
+    - Examiner
+    - Claimant Type
+    - Ending Inventory
+    - New Claims
+    - Closed Claims
+    - Reopen
+    - Transfer IN
+    - Transfer OUT
+    - Closing Ratio
+    client_state: ''
+    client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Office","Manager","Examiner","Claimant Type","Ending
+      Inventory","New Claims","Transfer IN","Reopen","Transfer OUT","Closed Claims"],"columnProperties": [{"columnId": "Office","columnProperty":
+      {"isHidden": false}},{"columnId": "Manager","columnProperty": {"isHidden": false}},{"columnId": "Examiner","columnProperty":
+      {"isHidden": false}},{"columnId": "Claimant Type","columnProperty": {"isHidden": false}},{"columnId": "Ending Inventory","columnProperty":
+      {"isHidden": false}},{"columnId": "New Claims","columnProperty": {"isHidden": false}},{"columnId": "Closed Claims","columnProperty":
+      {"isHidden": false}},{"columnId": "Reopen","columnProperty": {"isHidden": false}},{"columnId": "Transfer IN","columnProperty":
+      {"isHidden": false}},{"columnId": "Transfer OUT","columnProperty": {"isHidden": false}}]}'
+  chart:
+    type: ADVANCED_PIVOT_TABLE
+    chart_columns:
+    - column_id: Claimant Type
+    - column_id: Closed Claims
+    - column_id: Closing Ratio
+    - column_id: Ending Inventory
+    - column_id: Examiner
+    - column_id: Manager
+    - column_id: Measure names
+      type: MEASURE_NAMES
+    - column_id: New Claims
+    - column_id: Office
+    - column_id: Reopen
+    - column_id: Transfer IN
+    - column_id: Transfer OUT
+    client_state: ''
+    client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotState": {"fields": [{"dataField": "Measure
+      names","sortBy": "value","sortBySummaryField": "Measure names","sortOrder": "","expanded": true,"area": "column"},{"dataField":
+      "Office","sortBy": "value","sortBySummaryField": "Office","sortOrder": "asc","expanded": true,"area": "row"}]},"isStackedAsPercent":
+      false,"pivotSummariesState": {}}},"columnProperties": [{"columnId": "Office","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Manager","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Examiner","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant Type","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure values","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Ending Inventory","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "New Claims","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}}],"axisProperties": [{"id": "286de01f-e6e7-4dbd-a6f5-0baf555ba9f4","properties":
+      {"axisType": "Y","linkedColumns": ["Measure values"],"isOpposite": false}},{"id": "56d5ada0-8ac7-4903-b023-7172ecad2247","properties":
+      {"axisType": "X","linkedColumns": ["Office"]}}]}'
+    custom_chart_config:
+    - key: basic
+      dimensions:
+      - key: rows
+        columns:
+        - Office
+        - Manager
+        - Examiner
+        - Claimant Type
+        mode: COLUMN_DRIVEN
+      - key: values
+        columns:
+        - Ending Inventory
+        - New Claims
+        - Transfer IN
+        - Reopen
+        - Transfer OUT
+        - Closed Claims
+        - Closing Ratio
+        mode: COLUMN_DRIVEN
+      - key: columns
+        columns:
+        - Measure names
+        mode: COLUMN_DRIVEN
+      - key: split-by-color
+        mode: COLUMN_DRIVEN
+    custom_visual_props: '{"clientState":"","axisVisualProps":{},"columnVisualProps":{"Office":{"column-sort":{}},"Manager":{"column-sort":{}},"Examiner":{"column-sort":{}},"Claimant
+      Type":{"column-sort":{}},"Ending Inventory":{},"New Claims":{},"Transfer IN":{},"Reopen":{},"Transfer OUT":{},"Closed
+      Claims":{},"Closing Ratio":{}},"displayVisualProps":{"values":{},"totals-summary":{"show-grand-totals":{"show-row-grand-totals":false,"show-column-grand-totals":false},"show-sub-totals":{"show-row-sub-totals":false,"show-column-sub-totals":true},"totals-position":{}},"heatmap-mode-section":{"heatmap-mode-enable":false,"includeTotalDomain":false,"heatmap-mode-radio":{}},"pagination":{"pagination-enable":true}},"dataLabelVisualProps":{},"legendVisualProps":{"legend":{"show-legend":false,"position":"Right"}},"tooltipVisualProps":{"global-tooltip":{"tooltipBackground":{"backgroundColor":"#1d232f","borderColor":"#1d232f","backgroundOpacity":"100"},"tooltip-column-name":{"size":"12","color":"#ffffff","style":[]},"tooltip-column-value":{"size":"12","color":"#ffffff","style":[]}}}}'
+  display_mode: CHART_MODE
+  dynamic_name: Pivot PS

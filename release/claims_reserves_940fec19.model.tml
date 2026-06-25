@@ -1,0 +1,298 @@
+obj_id: Claims-Reserves-940fec19
+model:
+  name: Claims - Reserves
+  description: Star schema for Claims reporting that use the Fact Claim Reserve Transactions table only. Also contains associated
+    dimensions.
+  model_tables:
+  - name: DIM_RESERVE_TYPE
+    obj_id: DIM_RESERVE_TYPE-2cb573b7
+  - name: DIM_CLAIMANT_CURRENT
+    obj_id: DIM_CLAIMANT_CURRENT-9a0aed7a
+  - name: DIM_POLICY
+    obj_id: DIM_POLICY-a0674bf4
+  - name: DIM_LINE_OF_BUSINESS
+    obj_id: DIM_LINE_OF_BUSINESS-98dd8f2d
+  - name: FACT_CLAIM_RESERVE_TRANSACTION
+    joins:
+    - with: DIM_CLAIMANT_CURRENT
+      'on': '[FACT_CLAIM_RESERVE_TRANSACTION::CLAIMANT_SCD2_KEY] = [DIM_CLAIMANT_CURRENT::CLAIMANT_SCD2_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_CLAIM_CURRENT
+      'on': '[FACT_CLAIM_RESERVE_TRANSACTION::CLAIM_SCD2_KEY] = [DIM_CLAIM_CURRENT::CLAIM_SCD2_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_LINE_OF_BUSINESS
+      'on': '[FACT_CLAIM_RESERVE_TRANSACTION::LINE_OF_BUSINESS_KEY] = [DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_POLICY
+      'on': '[FACT_CLAIM_RESERVE_TRANSACTION::POLICY_KEY] = [DIM_POLICY::POLICY_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_RESERVE_TYPE
+      'on': '[FACT_CLAIM_RESERVE_TRANSACTION::RESERVE_TYPE_KEY] = [DIM_RESERVE_TYPE::RESERVE_TYPE_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    obj_id: FACT_CLAIM_RESERVE_TRANSACTION-0f92f81c
+  - name: DIM_CLAIM_CURRENT
+    obj_id: DIM_CLAIM_CURRENT-ab704eb1
+  columns:
+  - name: Claim ID
+    column_id: DIM_CLAIM_CURRENT::CLAIM_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Birth Date
+    column_id: DIM_CLAIMANT_CURRENT::BIRTH_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Reserve Amount
+    column_id: FACT_CLAIM_RESERVE_TRANSACTION::RESERVE_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Injury County
+    column_id: DIM_CLAIM_CURRENT::INJURY_COUNTY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Cause Id
+    column_id: DIM_CLAIM_CURRENT::INJURY_CAUSE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claim Valid From
+    column_id: DIM_CLAIM_CURRENT::VALID_FROM
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Valid From
+    column_id: DIM_CLAIMANT_CURRENT::VALID_FROM
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claim Valid To
+    column_id: DIM_CLAIM_CURRENT::VALID_TO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Valid To
+    column_id: DIM_CLAIMANT_CURRENT::VALID_TO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Hire Date
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_HIRE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Injury Address1
+    column_id: DIM_CLAIM_CURRENT::INJURY_ADDRESS1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Address2
+    column_id: DIM_CLAIM_CURRENT::INJURY_ADDRESS2
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury City
+    column_id: DIM_CLAIM_CURRENT::INJURY_CITY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury State
+    column_id: DIM_CLAIM_CURRENT::INJURY_STATE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Zip Code
+    column_id: DIM_CLAIM_CURRENT::INJURY_ZIP_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Desc
+    column_id: DIM_CLAIMANT_CURRENT::INJURY_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Nature Of Injury Desc
+    column_id: DIM_CLAIMANT_CURRENT::NATURE_OF_INJURY_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Nature Of Injury Id
+    column_id: DIM_CLAIMANT_CURRENT::NATURE_OF_INJURY_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Insured Address 1
+    column_id: DIM_POLICY::INSURED_ADDRESS_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured City
+    column_id: DIM_POLICY::INSURED_CITY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured State
+    column_id: DIM_POLICY::INSURED_STATE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured Zip Code
+    column_id: DIM_POLICY::INSURED_ZIP_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Cause Desc
+    column_id: DIM_CLAIM_CURRENT::INJURY_CAUSE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Body Part Desc
+    column_id: DIM_CLAIMANT_CURRENT::BODY_PART_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Body Part ID
+    column_id: DIM_CLAIMANT_CURRENT::BODY_PART_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Closed Date
+    column_id: DIM_CLAIMANT_CURRENT::CLOSED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Litigated
+    column_id: DIM_CLAIMANT_CURRENT::LITIGATED
+    properties:
+      column_type: ATTRIBUTE
+  - name: PD Rating
+    column_id: DIM_CLAIMANT_CURRENT::PD_RATING
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Occupation Desc
+    column_id: DIM_CLAIMANT_CURRENT::OCCUPATION_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Avg Weekly Wage
+    column_id: DIM_CLAIMANT_CURRENT::AVG_WEEKLY_WAGE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Class Code
+    column_id: DIM_CLAIM_CURRENT::CLASS_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Type Id
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_TYPE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Examiner Code
+    column_id: DIM_CLAIM_CURRENT::EXAMINER_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Policy Period Id
+    column_id: DIM_POLICY::POLICY_PERIOD_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Id
+    column_id: DIM_POLICY::POLICY_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Jurisdiction Code
+    column_id: DIM_POLICY::JURISDICTION_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Reserve Type Desc
+    column_id: DIM_RESERVE_TYPE::RESERVE_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Policy Number
+    column_id: DIM_POLICY::POLICY_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Loss Date
+    column_id: DIM_CLAIM_CURRENT::LOSS_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Insured Name
+    column_id: DIM_POLICY::INSURED_NAME_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Type Desc
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Reserve Payment Entry Date
+    column_id: FACT_CLAIM_RESERVE_TRANSACTION::PAYMENT_ENTRY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claim Number
+    column_id: DIM_CLAIM_CURRENT::CLAIM_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Status Desc
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_STATUS_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Line Of Business Code
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Line Of Business Desc
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Line Of Business ID
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant ID
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Name
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insurer Code
+    column_id: DIM_POLICY::INSURER_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Status ID
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_STATUS_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Reserve Type ID
+    column_id: DIM_RESERVE_TYPE::RESERVE_TYPE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Inception Date
+    column_id: DIM_POLICY::POLICY_INCEPTION_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Expiration Date
+    column_id: DIM_POLICY::POLICY_EXPIRATION_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: false
+  parameters:
+  - id: 1fd352ca-f063-479d-97b9-ab9de5a9c4b8
+    name: ClaimantFirstName
+    data_type: CHAR
+    default_value: 'null'
+    description: ''
+  - id: 86ef477f-c738-4574-9afa-a939ea95e75f
+    name: ClaimantLastName
+    data_type: CHAR
+    default_value: 'null'
+    description: ''

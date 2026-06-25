@@ -1,0 +1,1545 @@
+liveboard:
+  name: Spotter Conversations
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Feedback Response
+      description: Excludes conversations without any feedback
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [User Feedback Rating] [User Feedback Rating] = [User Feedback Rating].up_vote [User
+        Feedback Rating].down_vote'
+      answer_columns:
+      - name: Conversations
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: User Feedback Rating
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: User Feedback Rating
+          show_headline: false
+        ordered_column_ids:
+        - User Feedback Rating
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Conversations
+        - column_id: User Feedback Rating
+        axis_configs:
+        - x:
+          - User Feedback Rating
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","pivotSummariesState":
+          {}},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "User Feedback Rating","columnProperty":
+          {"dataLabels": false}},{"columnId": "Conversations","columnProperty": {"dataLabels": true}}],"axisProperties": [{"id":
+          "8c699984-1470-47e1-83b0-61166fab37c7","properties": {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite":
+          false}},{"id": "07cf0281-2d83-4f92-96fe-b651ecf657e0","properties": {"axisType": "X","linkedColumns": ["User Feedback
+          Rating"]}}],"seriesColors": [{"serieName": "Conversations","color": "#FCC838"},{"serieName": "10/24/2024","color":
+          "#2E75F0"},{"serieName": "up_vote","color": "#56D3A8"},{"serieName": "down_vote","color": "#f36775"}],"systemSeriesColors":
+          [{"serieName": "Conversations","color": "#FCC838"},{"serieName": "10/24/2024","color": "#2E75F0"},{"serieName":
+          "down_vote","color": "#48D1E0"},{"serieName": "up_vote","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 589f5d08-96c2-4f06-9442-73807824abf4
+  - id: Viz_2
+    answer:
+      name: Conversation Length Distribution
+      description: By number of questions asked
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [Conversation Length]'
+      answer_columns:
+      - name: Conversation Length
+      - name: Conversations
+      table:
+        table_columns:
+        - column_id: Conversation Length
+          show_headline: false
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversation Length
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Conversation Length","columnProperty":
+          {}},{"columnId": "Conversations","columnProperty": {}}]}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Conversation Length
+        - column_id: Conversations
+        axis_configs:
+        - x:
+          - Conversation Length
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"dataFieldArea": "column"},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Conversation
+          Length","columnProperty": {}},{"columnId": "Conversations","columnProperty": {"dataLabels": true}}],"axisProperties":
+          [{"id": "ded0c627-4500-4aa7-a7c7-68b51850a540","properties": {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite":
+          false}},{"id": "d44faadb-3be5-41b7-8567-88982de80d76","properties": {"axisType": "X","linkedColumns": ["Conversation
+          Length"]}}],"seriesColors": [{"serieName": "Conversations","color": "#A2ACBA"}],"systemSeriesColors": [{"serieName":
+          "Conversations","color": "#48D1E0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 2ba1cfe3-b6ec-4051-9899-8a5fc4b3918e
+  - id: Viz_3
+    answer:
+      name: Avg Conversation Length
+      description: No. of questions asked
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: average [Conversation Length]
+      answer_columns:
+      - name: Average Conversation Length
+      table:
+        table_columns:
+        - column_id: Average Conversation Length
+          show_headline: false
+        ordered_column_ids:
+        - Average Conversation Length
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Conversation Length
+        axis_configs:
+        - y:
+          - Average Conversation Length
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","pivotSummariesState":
+          {}}},"columnProperties": [{"columnId": "Average Conversation Length","columnProperty": {}}],"axisProperties": [{"id":
+          "979609b8-2a4f-4588-a908-2aece3f7144f","properties": {"axisType": "Y","linkedColumns": ["Average Conversation Length"],"isOpposite":
+          false}},{"id": "d5d07a7c-7292-4126-9bfd-5eb76c728bf9","properties": {"axisType": "X"}}],"seriesColors": [{"serieName":
+          "Average Conversation Length","color": "#747E8C"}]}'
+      display_mode: CHART_MODE
+    viz_guid: f6a90b2d-de24-47b9-a7c2-bd99f040d22b
+  - id: Viz_4
+    viz_guid: 33e0af36-5f86-4689-8a47-d6d955b98935
+    note_tile:
+      html_parsed_string: '<h2 class="theme-module__editor-h2" dir="ltr"><span style="white-space: pre-wrap;">Track the entire
+        conversation journey of your users on Spotter from Liveboards </span></h2><ul class="theme-module__editor-ul"><li
+        value="1" class="theme-module__editor-list-item"><span style="white-space: pre-wrap;">- Analyze engagement by viewing
+        exact questions, search tokens, and queries with feedback. </span></li><li value="2" class="theme-module__editor-list-item"><span
+        style="white-space: pre-wrap;">- Track edits, deletions, and other key events. </span></li><li value="3" class="theme-module__editor-list-item"><span
+        style="white-space: pre-wrap;">- Expand insights by adding columns and drilling into rows.</span></li></ul><p class="theme-module__editor-paragraph"
+        dir="ltr"><b><strong class="theme-module__editor-text-bold" style="white-space: pre-wrap;">Note</strong></b><span
+        style="white-space: pre-wrap;">: </span><span style="color: rgb(240, 65, 82); white-space: pre-wrap;">There is a delay
+        of up to two hours from the time an event is triggered for it to appear on this Liveboard.</span></p><p class="theme-module__editor-paragraph"
+        dir="ltr"><br></p><div class="pinboard-note-tile-module__noteTileBg editor-module__bgNode" style="background-color:
+        rgb(255, 255, 255);"></div><p class="theme-module__editor-paragraph" dir="ltr"><br></p>'
+  - id: Viz_5
+    answer:
+      name: Conversations by Model
+      description: Top 5 models which have the most conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Model] [Conversations] sort by [Conversations] descending top 5 [Model] != ''{null}'''
+      answer_columns:
+      - name: Conversations
+      - name: Model
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: Model
+          show_headline: false
+        ordered_column_ids:
+        - Model
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Model","columnProperty": {}},{"columnId":
+          "Conversations","columnProperty": {}}]}'
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Conversations
+        - column_id: Model
+        axis_configs:
+        - x:
+          - Model
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"pivotSummariesState": {}},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Model","columnProperty":
+          {}},{"columnId": "b1cb4e03-b0d1-46a8-93ee-7cd51be5bb13","columnProperty": {}},{"columnId": "ec3e91cd-b4e6-4979-9c2c-8f0858435fbe","columnProperty":
+          {}},{"columnId": "Conversations","columnProperty": {"dataLabels": true}}],"axisProperties": [{"id": "821a1270-ec81-425a-b909-0e273c2904f0","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "5f98b2c6-6a2f-4d5d-8c9c-d23385b6f8d8","properties":
+          {"axisType": "X","linkedColumns": ["Model"],"name": "Model"}}],"seriesColors": [{"serieName": "Conversations","color":
+          "#B094F8"}],"systemSeriesColors": [{"serieName": "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 0f052600-5438-462b-80ff-75ec2af307fb
+  - id: Viz_6
+    answer:
+      name: Active Users
+      description: Weekly
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].weekly [Unique Users]'
+      answer_columns:
+      - name: Unique Users
+      - name: Week(Timestamp)
+      table:
+        table_columns:
+        - column_id: Unique Users
+          show_headline: false
+        - column_id: Week(Timestamp)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Timestamp)
+        - Unique Users
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Users
+        - column_id: Week(Timestamp)
+        axis_configs:
+        - x:
+          - Week(Timestamp)
+          y:
+          - Unique Users
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Week(Timestamp)","columnProperty": {}},{"columnId": "Unique Users","columnProperty":
+          {}}],"axisProperties": [{"id": "ee015132-2b33-465f-aad7-b2a4f3e7c9f8","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Users"],"isOpposite": false}},{"id": "c01dbc78-b3dc-4390-b246-73056f3e7479","properties": {"axisType":
+          "X","linkedColumns": ["Week(Timestamp)"]}}],"systemSeriesColors": [{"serieName": "Unique Users","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: f3202548-c7bc-4ec5-95bd-962b21b70ade
+  - id: Viz_7
+    answer:
+      name: Most Active Users
+      description: Top 10 users who started the most conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[User Name] [Conversations] sort by [Conversations] descending top 10'
+      answer_columns:
+      - name: Conversations
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        ordered_column_ids:
+        - User Name
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Conversations
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "User Name","columnProperty":
+          {}},{"columnId": "Conversations","columnProperty": {"dataLabels": true}}],"axisProperties": [{"id": "75f30ba4-7d40-4370-ae50-b82974d1064b","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "66666c1d-01a6-4570-94f7-502c47630eec","properties":
+          {"axisType": "X","linkedColumns": ["User Name"]}}],"seriesColors": [{"serieName": "4e3999bc-79c9-4031-ba55-33aac532f616","color":
+          "#2E75F0"},{"serieName": "Conversations","color": "#5891f3"}],"systemSeriesColors": [{"serieName": "4e3999bc-79c9-4031-ba55-33aac532f616","color":
+          "#2E75F0"},{"serieName": "Conversations","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 1bc875c9-df2d-4d89-9a0d-929a0b4355df
+  - id: Viz_8
+    answer:
+      name: Complete Conversations Log
+      description: Shows all the conversations from all users. Displays each user interaction with Spotter as a separate row.
+        Highlighted rows show the start of a new conversation.
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].detailed [Conversation ID] [User Name] [Response] [User Feedback Rating] [User
+        Feedback Labels] [User Feedback Comments] [User Query] [User Action Type] [User Message Count] [Model] sort by [Conversation
+        start time] [Conversation start time].detailed descending sort by [Timestamp] [Timestamp].detailed [Liveboard Name]
+        [Viz Title] [Timestamp] = ''last 90 days'' [Conversation Origin] = ''liveboard'''
+      answer_columns:
+      - name: Conversation ID
+        custom_name: Conv Id
+      - name: Conversation start time
+        sort_info:
+          category: DEFAULT
+      - name: Liveboard Name
+      - name: Model
+        custom_name: Model
+        dynamic_title: Model
+      - name: Response
+      - name: Timestamp
+        custom_name: Time stamp
+        sort_info:
+          category: DEFAULT
+      - name: User Action Type
+      - name: User Feedback Comments
+      - name: User Feedback Labels
+      - name: User Feedback Rating
+      - name: User Message Count
+        custom_name: Order
+      - name: User Name
+      - name: User Query
+      - name: Viz Title
+      table:
+        table_columns:
+        - column_id: Conversation ID
+          show_headline: false
+        - column_id: Conversation start time
+          show_headline: false
+        - column_id: Liveboard Name
+          show_headline: false
+        - column_id: Model
+          show_headline: false
+        - column_id: Response
+          show_headline: false
+        - column_id: Timestamp
+          show_headline: false
+        - column_id: User Action Type
+          show_headline: false
+        - column_id: User Feedback Comments
+          show_headline: false
+        - column_id: User Feedback Labels
+          show_headline: false
+        - column_id: User Feedback Rating
+          show_headline: false
+        - column_id: User Message Count
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        - column_id: User Query
+          show_headline: false
+        - column_id: Viz Title
+          show_headline: false
+        ordered_column_ids:
+        - Timestamp
+        - Conversation ID
+        - User Name
+        - Response
+        - User Feedback Rating
+        - User Feedback Labels
+        - User Feedback Comments
+        - User Query
+        - User Action Type
+        - User Message Count
+        - Model
+        - Conversation start time
+        - Liveboard Name
+        - Viz Title
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "User Query","width": 199.0},{"columnId":
+          "Timestamp","width": 100.84646606445312},{"columnId": "Model","width": 116.0},{"columnId": "User Message Count","width":
+          68.40365600585938},{"columnId": "User Action Type","width": 107.44671630859375},{"columnId": "Liveboard Name","width":
+          102.0},{"columnId": "Viz Title","width": 96.0},{"columnId": "Conversation ID","width": 78.0},{"columnId": "User
+          Name","width": 93.15362548828125}],"wrapTableHeader": false,"theme": "ROW","density": "COMPACT","orderedColumnIds":
+          ["User Name","Model","Liveboard Name","Viz Title","Conversation ID","Timestamp","User Message Count","User Action
+          Type","User Query","Response","User Feedback Rating"],"columnProperties": [{"columnId": "Timestamp","columnProperty":
+          {"wrapColumnText": true,"isHidden": false}},{"columnId": "Conversation start time","columnProperty": {"isHidden":
+          true}},{"columnId": "Conversation ID","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value":
+          "c4481680-8eb6-4de5-9d25-ad70130ebe53","backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "Conversation ID","isHighlightRow": false}]},"isHidden": false}},{"columnId": "User
+          Name","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {}}},{"columnId": "Response","columnProperty":
+          {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color":
+          "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false},{"operator": "IS_NOT_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false}]}}},{"columnId":
+          "User Feedback Rating","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value": "UP_VOTE","plotAsBand":
+          false,"fontProperties": {"color": "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {"color": "#9BE5CB"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback
+          Rating","isHighlightRow": false},{"operator": "IS","value": "DOWN_VOTE","plotAsBand": false,"fontProperties": {"color":
+          "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#f68d97"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Rating","isHighlightRow": false}]},"isHidden":
+          false}},{"columnId": "User Feedback Labels","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Labels","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Labels","isHighlightRow":
+          false}]}}},{"columnId": "User Feedback Comments","columnProperty": {"conditionalFormatting": {"rows": [{"operator":
+          "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Comments","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Comments","isHighlightRow":
+          false}]}}},{"columnId": "User Query","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows":
+          [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic":
+          true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow":
+          false}]},"isHidden": false}},{"columnId": "User Action Type","columnProperty": {"wrapColumnText": true,"conditionalFormatting":
+          {"rows": [{"operator": "IS","value": "Create conversation","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#dddddd"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Action Type","isHighlightRow": true}]},"isHidden":
+          false}},{"columnId": "User Message Count","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#47515F","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {"color": "#ddd"},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": true},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow": false},{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": false}]},"isHidden": false}},{"columnId": "Model","columnProperty": {"wrapColumnText":
+          true,"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Model","isHighlightRow": false}]},"isHidden":
+          false}},{"columnId": "Liveboard Name","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {}}},{"columnId":
+          "Viz Title","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {}}}]}'
+      chart:
+        type: SCATTER
+        chart_columns:
+        - column_id: Conversation ID
+        - column_id: Conversation start time
+        - column_id: Liveboard Name
+        - column_id: Model
+        - column_id: Response
+        - column_id: Timestamp
+        - column_id: User Action Type
+        - column_id: User Feedback Comments
+        - column_id: User Feedback Labels
+        - column_id: User Feedback Rating
+        - column_id: User Message Count
+        - column_id: User Name
+        - column_id: User Query
+        - column_id: Viz Title
+        axis_configs:
+        - x:
+          - Timestamp
+          y:
+          - User Message Count
+          color:
+          - User Name
+          - User Feedback Rating
+          - Model
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}}},"columnProperties":
+          [{"columnId": "User Feedback Rating","columnProperty": {}},{"columnId": "User Query","columnProperty": {}},{"columnId":
+          "User Action Type","columnProperty": {}},{"columnId": "Timestamp","columnProperty": {}},{"columnId": "User Message
+          Count","columnProperty": {}},{"columnId": "User Name","columnProperty": {}},{"columnId": "Model","columnProperty":
+          {}}],"axisProperties": [{"id": "56f14255-19d8-495b-be11-88331b948031","properties": {"axisType": "Y","linkedColumns":
+          ["User Message Count"],"isOpposite": false}},{"id": "812013a7-3532-46d2-b14b-b5f389116b9e","properties": {"axisType":
+          "X","linkedColumns": ["Timestamp"]}}]}'
+      display_mode: TABLE_MODE
+    viz_guid: 5aece58b-d247-49b2-ac66-36d63f86e1cb
+  - id: Viz_9
+    answer:
+      name: Total Conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [Conversation Origin] = ''liveboard'''
+      answer_columns:
+      - name: Conversations
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        axis_configs:
+        - y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Conversations","columnProperty": {}}],"axisProperties": [{"id": "dd28d4b7-6fe8-4e99-828c-d1c3d8213513","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "2f2f2c9d-e1a5-479d-85d4-91379893d5f5","properties":
+          {"axisType": "X"}}],"seriesColors": [{"serieName": "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: ec03f713-3710-484b-95db-896e5b1867d6
+  - id: Viz_10
+    answer:
+      name: Conversations by Liveboard
+      description: Top 5 liveboards which have the most conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Liveboard Name] [Conversations] [Conversation Origin] = ''liveboard'' sort by [Conversations] descending
+        top 5'
+      answer_columns:
+      - name: Conversations
+      - name: Liveboard Name
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: Liveboard Name
+          show_headline: false
+        ordered_column_ids:
+        - Liveboard Name
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Conversations","columnProperty":
+          {}}]}'
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Conversations
+        - column_id: Liveboard Name
+        axis_configs:
+        - x:
+          - Liveboard Name
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"pivotSummariesState": {}},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Conversations","columnProperty":
+          {"dataLabels": true}},{"columnId": "Liveboard Name","columnProperty": {"dataLabels": true}}],"axisProperties": [{"id":
+          "4793aa57-5214-4840-89e6-15a3a3193365","properties": {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite":
+          false}},{"id": "7ababc31-df8b-4aa8-8e32-474b7eb9c9d1","properties": {"axisType": "X","linkedColumns": ["Liveboard
+          Name"]}}],"seriesColors": [{"serieName": "Conversations","color": "#B094F8"}],"systemSeriesColors": [{"serieName":
+          "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: dfde3882-388a-45ea-aa7a-5127b6f13ba0
+  - id: Viz_11
+    answer:
+      name: Downvoted Conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [User Feedback Rating] = ''down_vote'' [Conversation Origin] = ''home page'''
+      answer_columns:
+      - name: Conversations
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        axis_configs:
+        - y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Conversations","columnProperty": {}}],"axisProperties": [{"id": "dd28d4b7-6fe8-4e99-828c-d1c3d8213513","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "2f2f2c9d-e1a5-479d-85d4-91379893d5f5","properties":
+          {"axisType": "X"}}],"seriesColors": [{"serieName": "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 4ea3e14a-ae17-4f15-9cdc-71617ed029d7
+  - id: Viz_12
+    answer:
+      name: Conversations by Origin
+      description: Starting point of the conversation
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversation Origin] [Conversations] sort by [Conversations] descending'
+      answer_columns:
+      - name: Conversation Origin
+      - name: Conversations
+        sort_info:
+          category: DEFAULT
+      table:
+        table_columns:
+        - column_id: Conversation Origin
+          show_headline: false
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversation Origin
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Conversation Origin","columnProperty":
+          {}},{"columnId": "Conversations","columnProperty": {}}]}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Conversation Origin
+        - column_id: Conversations
+        axis_configs:
+        - x:
+          - Conversation Origin
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"dataFieldArea": "column"},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Conversation
+          Origin","columnProperty": {}},{"columnId": "505d4607-6231-46da-872f-a3ca81ab3cee","columnProperty": {}},{"columnId":
+          "281ef581-afe1-4096-ac2d-45b9a0142dce","columnProperty": {}},{"columnId": "Conversations","columnProperty": {"dataLabels":
+          true}}],"axisProperties": [{"id": "2b833029-1775-4ac5-a749-dc3ff58118a6","properties": {"axisType": "Y","linkedColumns":
+          ["Conversations"],"isOpposite": false}},{"id": "278748a7-55b1-44ab-8034-73eecea1efe4","properties": {"axisType":
+          "X","linkedColumns": ["Conversation Origin"]}}],"seriesColors": [{"serieName": "{null}","color": "#06BF7F"},{"serieName":
+          "home page","color": "#FCC838"},{"serieName": "liveboard","color": "#48D1E0"},{"serieName": "ts_answer","color":
+          "#71A1F4"},{"serieName": "ts_worksheet","color": "#2E75F0"},{"serieName": "Conversations","color": "#56D3A8"}],"systemSeriesColors":
+          [{"serieName": "Conversations","color": "#FCC838"},{"serieName": "{null}","color": "#06BF7F"},{"serieName": "home
+          page","color": "#FCC838"},{"serieName": "liveboard","color": "#48D1E0"},{"serieName": "ts_answer","color": "#71A1F4"},{"serieName":
+          "ts_worksheet","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 18e12c38-456b-45b6-a9e8-422bfcf461e2
+  - id: Viz_13
+    answer:
+      name: Conversations with downvoted responses
+      description: Displays each user interaction with Spotter as a separate row. <b>Focus on the downvoted interactions highlighted
+        in red</b>.
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].detailed [Conversation ID] [User Name] [Response] [User Feedback Rating] [User
+        Feedback Labels] [User Feedback Comments] [User Query] [User Action Type] [User Message Count] [Model] sort by [Conversation
+        start time] [Conversation start time].detailed descending sort by [Timestamp] [Timestamp].detailed [Conversation ID]
+        in ( [Conversation ID] [User Feedback Rating] = ''down_vote'' ) [Liveboard Name] [Viz Title] [Conversation Origin]
+        = ''liveboard'''
+      answer_columns:
+      - name: Conversation ID
+        custom_name: Conv Id
+      - name: Conversation start time
+        sort_info:
+          category: DEFAULT
+      - name: Liveboard Name
+      - name: Model
+        custom_name: Model
+        dynamic_title: Model
+      - name: Response
+      - name: Timestamp
+        custom_name: Time stamp
+        sort_info:
+          category: DEFAULT
+      - name: User Action Type
+      - name: User Feedback Comments
+      - name: User Feedback Labels
+      - name: User Feedback Rating
+      - name: User Message Count
+        custom_name: Order
+      - name: User Name
+      - name: User Query
+      - name: Viz Title
+      table:
+        table_columns:
+        - column_id: Conversation ID
+          show_headline: false
+        - column_id: Conversation start time
+          show_headline: false
+        - column_id: Liveboard Name
+          show_headline: false
+        - column_id: Model
+          show_headline: false
+        - column_id: Response
+          show_headline: false
+        - column_id: Timestamp
+          show_headline: false
+        - column_id: User Action Type
+          show_headline: false
+        - column_id: User Feedback Comments
+          show_headline: false
+        - column_id: User Feedback Labels
+          show_headline: false
+        - column_id: User Feedback Rating
+          show_headline: false
+        - column_id: User Message Count
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        - column_id: User Query
+          show_headline: false
+        - column_id: Viz Title
+          show_headline: false
+        ordered_column_ids:
+        - Timestamp
+        - Conversation ID
+        - User Name
+        - Response
+        - User Feedback Rating
+        - User Feedback Labels
+        - User Feedback Comments
+        - User Query
+        - User Action Type
+        - User Message Count
+        - Model
+        - Conversation start time
+        - Liveboard Name
+        - Viz Title
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "User Query","width": 199.0},{"columnId":
+          "Timestamp","width": 100.84646606445312},{"columnId": "Model","width": 116.0},{"columnId": "User Message Count","width":
+          68.40365600585938},{"columnId": "User Action Type","width": 107.44671630859375},{"columnId": "Liveboard Name","width":
+          102.0},{"columnId": "Viz Title","width": 96.0},{"columnId": "Conversation ID","width": 78.0},{"columnId": "User
+          Name","width": 93.15362548828125}],"wrapTableHeader": false,"theme": "ROW","density": "COMPACT","orderedColumnIds":
+          ["User Name","Model","Liveboard Name","Viz Title","Conversation ID","Timestamp","User Message Count","User Action
+          Type","User Query","Response","User Feedback Rating"],"columnProperties": [{"columnId": "Timestamp","columnProperty":
+          {"wrapColumnText": true,"isHidden": false}},{"columnId": "Conversation start time","columnProperty": {"isHidden":
+          true}},{"columnId": "Conversation ID","columnProperty": {"conditionalFormatting": {},"isHidden": false}},{"columnId":
+          "User Name","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {}}},{"columnId": "Response","columnProperty":
+          {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color":
+          "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false},{"operator": "IS_NOT_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false}]}}},{"columnId":
+          "User Feedback Rating","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value": "UP_VOTE","plotAsBand":
+          false,"fontProperties": {"color": "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {"color": "#9BE5CB"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback
+          Rating","isHighlightRow": false},{"operator": "IS","value": "DOWN_VOTE","plotAsBand": false,"fontProperties": {"color":
+          "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#f68d97"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Rating","isHighlightRow": false}]},"isHidden":
+          false}},{"columnId": "User Feedback Labels","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Labels","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Labels","isHighlightRow":
+          false}]}}},{"columnId": "User Feedback Comments","columnProperty": {"conditionalFormatting": {"rows": [{"operator":
+          "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Comments","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Comments","isHighlightRow":
+          false}]}}},{"columnId": "User Query","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows":
+          [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic":
+          true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow":
+          false}]},"isHidden": false}},{"columnId": "User Action Type","columnProperty": {"wrapColumnText": true,"conditionalFormatting":
+          {"rows": [{"operator": "IS","value": "Create conversation","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#dddddd"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Action Type","isHighlightRow": true}]},"isHidden":
+          false}},{"columnId": "User Message Count","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#47515F","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {"color": "#ddd"},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": true},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow": false},{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0"},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow": false}]},"isHidden": false}},{"columnId":
+          "Model","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "Model","isHighlightRow": false}]},"isHidden": false}},{"columnId": "Liveboard Name","columnProperty": {"wrapColumnText":
+          true,"conditionalFormatting": {}}},{"columnId": "Viz Title","columnProperty": {"wrapColumnText": true,"conditionalFormatting":
+          {}}}]}'
+      chart:
+        type: SCATTER
+        chart_columns:
+        - column_id: Conversation ID
+        - column_id: Conversation start time
+        - column_id: Liveboard Name
+        - column_id: Model
+        - column_id: Response
+        - column_id: Timestamp
+        - column_id: User Action Type
+        - column_id: User Feedback Comments
+        - column_id: User Feedback Labels
+        - column_id: User Feedback Rating
+        - column_id: User Message Count
+        - column_id: User Name
+        - column_id: User Query
+        - column_id: Viz Title
+        axis_configs:
+        - x:
+          - Timestamp
+          y:
+          - User Message Count
+          color:
+          - User Name
+          - User Feedback Rating
+          - Model
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}}},"columnProperties":
+          [{"columnId": "User Feedback Rating","columnProperty": {}},{"columnId": "User Query","columnProperty": {}},{"columnId":
+          "User Action Type","columnProperty": {}},{"columnId": "Timestamp","columnProperty": {}},{"columnId": "User Message
+          Count","columnProperty": {}},{"columnId": "User Name","columnProperty": {}},{"columnId": "Model","columnProperty":
+          {}}],"axisProperties": [{"id": "56f14255-19d8-495b-be11-88331b948031","properties": {"axisType": "Y","linkedColumns":
+          ["User Message Count"],"isOpposite": false}},{"id": "812013a7-3532-46d2-b14b-b5f389116b9e","properties": {"axisType":
+          "X","linkedColumns": ["Timestamp"]}}]}'
+      display_mode: TABLE_MODE
+    viz_guid: aa2dd63b-03c2-4a24-91c5-5e578a926ae2
+  - id: Viz_14
+    answer:
+      name: Conversations with Feedback
+      description: Weekly
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [Timestamp].weekly [User Feedback Rating] = [User Feedback Rating].up_vote [User Feedback
+        Rating].down_vote'
+      answer_columns:
+      - name: Conversations
+      - name: Week(Timestamp)
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: Week(Timestamp)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Timestamp)
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        - column_id: Week(Timestamp)
+        axis_configs:
+        - x:
+          - Week(Timestamp)
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","pivotSummariesState":
+          {}}},"columnProperties": [{"columnId": "Conversations","columnProperty": {}},{"columnId": "Week(Timestamp)","columnProperty":
+          {}}],"axisProperties": [{"id": "b7865a9a-c3d7-4a46-b9b2-0d2d7fabfd04","properties": {"axisType": "Y","linkedColumns":
+          ["Conversations"],"isOpposite": false}},{"id": "fba30f4f-0260-4e2c-9793-b87ea549e6bd","properties": {"axisType":
+          "X","linkedColumns": ["Week(Timestamp)"]}}],"seriesColors": [{"serieName": "Conversations","color": "#FCC838"}]}'
+      display_mode: CHART_MODE
+    viz_guid: da5445e2-ad5b-4ce6-a500-1dbd567a933f
+  - id: Viz_15
+    answer:
+      name: Users Providing Feedback
+      description: Top 10 users who provided the most feedback (upvote + downvote)
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[User Name] [Conversations] sort by [Conversations] descending top 10 [User Feedback Rating].down_vote
+        [User Feedback Rating].up_vote'
+      answer_columns:
+      - name: Conversations
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        ordered_column_ids:
+        - User Name
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Conversations
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "User Name","columnProperty":
+          {}},{"columnId": "Conversations","columnProperty": {"dataLabels": true}}],"axisProperties": [{"id": "75f30ba4-7d40-4370-ae50-b82974d1064b","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "66666c1d-01a6-4570-94f7-502c47630eec","properties":
+          {"axisType": "X","linkedColumns": ["User Name"]}}],"seriesColors": [{"serieName": "4e3999bc-79c9-4031-ba55-33aac532f616","color":
+          "#2E75F0"},{"serieName": "Conversations","color": "#5891f3"}],"systemSeriesColors": [{"serieName": "4e3999bc-79c9-4031-ba55-33aac532f616","color":
+          "#2E75F0"},{"serieName": "Conversations","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: adf0b3b5-0851-4b77-a82f-01688ba2fdd3
+  - id: Viz_16
+    answer:
+      name: Total Conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [Conversation Origin] = ''home page'''
+      answer_columns:
+      - name: Conversations
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        axis_configs:
+        - y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Conversations","columnProperty": {}}],"axisProperties": [{"id": "dd28d4b7-6fe8-4e99-828c-d1c3d8213513","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "2f2f2c9d-e1a5-479d-85d4-91379893d5f5","properties":
+          {"axisType": "X"}}],"seriesColors": [{"serieName": "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: c6a9a236-737d-4411-9d06-9e612368fd2a
+  - id: Viz_17
+    viz_guid: 8c1d9154-fde6-49fe-a10d-43be6dde7265
+    note_tile:
+      html_parsed_string: '<h2 class="theme-module__editor-h2" dir="ltr"><span style="white-space: pre-wrap;">Track the entire
+        conversation journey of your users on Spotter from the Homepage</span></h2><ul class="theme-module__editor-ul"><li
+        value="1" class="theme-module__editor-list-item"><span style="white-space: pre-wrap;">- Analyze engagement by viewing
+        exact questions, search tokens, and queries with feedback. </span></li><li value="2" class="theme-module__editor-list-item"><span
+        style="white-space: pre-wrap;">- Track edits, deletions, and other key events. </span></li><li value="3" class="theme-module__editor-list-item"><span
+        style="white-space: pre-wrap;">- Expand insights by adding columns and drilling into rows.</span></li></ul><p class="theme-module__editor-paragraph"
+        dir="ltr"><b><strong class="theme-module__editor-text-bold" style="white-space: pre-wrap;">Note</strong></b><span
+        style="white-space: pre-wrap;">: </span><span style="color: rgb(240, 65, 82); white-space: pre-wrap;">There is a delay
+        of up to two hours from the time an event is triggered for it to appear on this Liveboard.</span></p><div class="pinboard-note-tile-module__noteTileBg
+        editor-module__bgNode" style="background-color: rgb(255, 255, 255);"></div>'
+  - id: Viz_18
+    answer:
+      name: Conversations with downvoted responses
+      description: Displays each user interaction with Spotter as a separate row. <b>Focus on the downvoted interactions highlighted
+        in red</b>.
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].detailed [Conversation ID] [User Name] [Response] [User Feedback Rating] [User
+        Feedback Labels] [User Feedback Comments] [User Query] [User Action Type] [User Message Count] [Model] sort by [Conversation
+        start time] [Conversation start time].detailed descending sort by [Timestamp] [Timestamp].detailed [Conversation ID]
+        in ( [Conversation ID] [User Feedback Rating] = ''down_vote'' ) [Conversation Origin] = ''home page'''
+      answer_columns:
+      - name: Conversation ID
+        custom_name: Conv Id
+      - name: Conversation start time
+        sort_info:
+          category: DEFAULT
+      - name: Model
+        custom_name: Model
+        dynamic_title: Model
+      - name: Response
+      - name: Timestamp
+        custom_name: Time stamp
+        sort_info:
+          category: DEFAULT
+      - name: User Action Type
+      - name: User Feedback Comments
+      - name: User Feedback Labels
+      - name: User Feedback Rating
+      - name: User Message Count
+        custom_name: Order
+      - name: User Name
+      - name: User Query
+      table:
+        table_columns:
+        - column_id: Conversation ID
+          show_headline: false
+        - column_id: Conversation start time
+          show_headline: false
+        - column_id: Model
+          show_headline: false
+        - column_id: Response
+          show_headline: false
+        - column_id: Timestamp
+          show_headline: false
+        - column_id: User Action Type
+          show_headline: false
+        - column_id: User Feedback Comments
+          show_headline: false
+        - column_id: User Feedback Labels
+          show_headline: false
+        - column_id: User Feedback Rating
+          show_headline: false
+        - column_id: User Message Count
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        - column_id: User Query
+          show_headline: false
+        ordered_column_ids:
+        - Timestamp
+        - Conversation ID
+        - User Name
+        - Response
+        - User Feedback Rating
+        - User Feedback Labels
+        - User Feedback Comments
+        - User Query
+        - User Action Type
+        - User Message Count
+        - Model
+        - Conversation start time
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "User Query","width": 199.0},{"columnId":
+          "Timestamp","width": 100.84646606445312},{"columnId": "User Name","width": 107.15362548828125},{"columnId": "Model","width":
+          116.0},{"columnId": "Conversation ID","width": 80.0},{"columnId": "User Message Count","width": 68.40365600585938},{"columnId":
+          "User Action Type","width": 107.44671630859375}],"wrapTableHeader": false,"theme": "ROW","density": "COMPACT","orderedColumnIds":
+          ["User Name","Model","Conversation ID","Timestamp","User Message Count","User Action Type","User Query","Response","User
+          Feedback Rating"],"columnProperties": [{"columnId": "Timestamp","columnProperty": {"wrapColumnText": true,"isHidden":
+          false}},{"columnId": "Conversation start time","columnProperty": {"isHidden": true}},{"columnId": "Conversation
+          ID","columnProperty": {"conditionalFormatting": {},"isHidden": false}},{"columnId": "User Name","columnProperty":
+          {"conditionalFormatting": {"rows": [{"operator": "IS","value": "tsadmin","backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Name","isHighlightRow": false}]}}},{"columnId": "Response","columnProperty":
+          {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color":
+          "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false},{"operator": "IS_NOT_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false}]}}},{"columnId":
+          "User Feedback Rating","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value": "UP_VOTE","plotAsBand":
+          false,"fontProperties": {"color": "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {"color": "#9BE5CB"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback
+          Rating","isHighlightRow": false},{"operator": "IS","value": "DOWN_VOTE","plotAsBand": false,"fontProperties": {"color":
+          "#2F3947","bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#f68d97"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Rating","isHighlightRow": false}]},"isHidden":
+          false}},{"columnId": "User Feedback Labels","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Labels","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Labels","isHighlightRow":
+          false}]}}},{"columnId": "User Feedback Comments","columnProperty": {"conditionalFormatting": {"rows": [{"operator":
+          "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Feedback Comments","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Comments","isHighlightRow":
+          false}]}}},{"columnId": "User Query","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows":
+          [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic":
+          true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow":
+          false}]},"isHidden": false}},{"columnId": "User Action Type","columnProperty": {"wrapColumnText": true,"conditionalFormatting":
+          {"rows": [{"operator": "IS","value": "Create conversation","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#dddddd"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Action Type","isHighlightRow": true}]},"isHidden":
+          false}},{"columnId": "User Message Count","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#47515F","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {"color": "#ddd"},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": true},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow": false},{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": false}]},"isHidden": false}},{"columnId": "Model","columnProperty": {"wrapColumnText":
+          true,"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Model","isHighlightRow": false}]},"isHidden":
+          false}}]}'
+      chart:
+        type: SCATTER
+        chart_columns:
+        - column_id: Conversation ID
+        - column_id: Conversation start time
+        - column_id: Model
+        - column_id: Response
+        - column_id: Timestamp
+        - column_id: User Action Type
+        - column_id: User Feedback Comments
+        - column_id: User Feedback Labels
+        - column_id: User Feedback Rating
+        - column_id: User Message Count
+        - column_id: User Name
+        - column_id: User Query
+        axis_configs:
+        - x:
+          - Timestamp
+          y:
+          - User Message Count
+          color:
+          - User Name
+          - User Feedback Rating
+          - Model
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}}},"columnProperties":
+          [{"columnId": "User Feedback Rating","columnProperty": {}},{"columnId": "User Query","columnProperty": {}},{"columnId":
+          "User Action Type","columnProperty": {}},{"columnId": "Timestamp","columnProperty": {}},{"columnId": "User Message
+          Count","columnProperty": {}},{"columnId": "User Name","columnProperty": {}},{"columnId": "Model","columnProperty":
+          {}}],"axisProperties": [{"id": "56f14255-19d8-495b-be11-88331b948031","properties": {"axisType": "Y","linkedColumns":
+          ["User Message Count"],"isOpposite": false}},{"id": "812013a7-3532-46d2-b14b-b5f389116b9e","properties": {"axisType":
+          "X","linkedColumns": ["Timestamp"]}}]}'
+      display_mode: TABLE_MODE
+    viz_guid: 84bf9ec9-9305-4859-b083-76919d37c7f4
+  - id: Viz_19
+    answer:
+      name: Complete Conversations Log
+      description: Shows all the conversations from all users. Displays each user interaction with Spotter as a separate row.
+        Highlighted rows show the start of a new conversation.
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].detailed [Conversation ID] [User Name] [Response] [User Feedback Rating] [User
+        Feedback Labels] [User Feedback Comments] [User Query] [User Action Type] [User Message Count] [Model] sort by [Conversation
+        start time] [Conversation start time].detailed descending sort by [Timestamp] [Timestamp].detailed [Conversation Origin]
+        = ''home page'''
+      answer_columns:
+      - name: Conversation ID
+        custom_name: Conv Id
+      - name: Conversation start time
+        sort_info:
+          category: DEFAULT
+      - name: Model
+        custom_name: Model
+        dynamic_title: Model
+      - name: Response
+      - name: Timestamp
+        custom_name: Time stamp
+        sort_info:
+          category: DEFAULT
+      - name: User Action Type
+      - name: User Feedback Comments
+      - name: User Feedback Labels
+      - name: User Feedback Rating
+      - name: User Message Count
+        custom_name: Order
+      - name: User Name
+      - name: User Query
+      table:
+        table_columns:
+        - column_id: Conversation ID
+          show_headline: false
+        - column_id: Conversation start time
+          show_headline: false
+        - column_id: Model
+          show_headline: false
+        - column_id: Response
+          show_headline: false
+        - column_id: Timestamp
+          show_headline: false
+        - column_id: User Action Type
+          show_headline: false
+        - column_id: User Feedback Comments
+          show_headline: false
+        - column_id: User Feedback Labels
+          show_headline: false
+        - column_id: User Feedback Rating
+          show_headline: false
+        - column_id: User Message Count
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        - column_id: User Query
+          show_headline: false
+        ordered_column_ids:
+        - Timestamp
+        - Conversation ID
+        - User Name
+        - Response
+        - User Feedback Rating
+        - User Feedback Labels
+        - User Feedback Comments
+        - User Query
+        - User Action Type
+        - User Message Count
+        - Model
+        - Conversation start time
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "User Query","width": 199.0},{"columnId":
+          "Timestamp","width": 100.84646606445312},{"columnId": "User Name","width": 107.15362548828125},{"columnId": "Model","width":
+          116.0},{"columnId": "Conversation ID","width": 80.0},{"columnId": "User Message Count","width": 68.40365600585938},{"columnId":
+          "User Action Type","width": 107.44671630859375}],"wrapTableHeader": false,"theme": "ROW","density": "COMPACT","orderedColumnIds":
+          ["User Name","Model","Conversation ID","Timestamp","User Message Count","User Action Type","User Query","Response","User
+          Feedback Rating"],"columnProperties": [{"columnId": "Timestamp","columnProperty": {"wrapColumnText": true,"isHidden":
+          false}},{"columnId": "Conversation start time","columnProperty": {"isHidden": true}},{"columnId": "Conversation
+          ID","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value": "c4481680-8eb6-4de5-9d25-ad70130ebe53","backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Conversation ID","isHighlightRow":
+          false}]},"isHidden": false}},{"columnId": "User Name","columnProperty": {"conditionalFormatting": {}}},{"columnId":
+          "Response","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "Response","isHighlightRow": false},{"operator":
+          "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties": {"bold": true,"italic": false,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "Response","isHighlightRow": false}]}}},{"columnId": "User Feedback Rating","columnProperty": {"conditionalFormatting":
+          {"rows": [{"operator": "IS","value": "UP_VOTE","plotAsBand": false,"fontProperties": {"color": "#2F3947","bold":
+          true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {"color": "#9BE5CB"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Rating","isHighlightRow": false},{"operator":
+          "IS","value": "DOWN_VOTE","plotAsBand": false,"fontProperties": {"color": "#2F3947","bold": true,"italic": false,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {"color": "#f68d97"},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "User Feedback Rating","isHighlightRow": false}]},"isHidden": false}},{"columnId":
+          "User Feedback Labels","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Labels","isHighlightRow":
+          false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Labels","isHighlightRow": false}]}}},{"columnId":
+          "User Feedback Comments","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand":
+          false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Comments","isHighlightRow":
+          false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Feedback Comments","isHighlightRow": false}]}}},{"columnId":
+          "User Query","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows": [{"operator": "IS_NULL","value":
+          "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline":
+          false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Query","isHighlightRow": false},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"bold": true,"italic": false,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Query","isHighlightRow": false}]},"isHidden": false}},{"columnId":
+          "User Action Type","columnProperty": {"wrapColumnText": true,"conditionalFormatting": {"rows": [{"operator": "IS","value":
+          "Create conversation","plotAsBand": false,"backgroundFormatType": "SOLID","solidBackgroundAttrs": {"color": "#dddddd"},"comparisonType":
+          "VALUE_BASED","lhsColumnId": "User Action Type","isHighlightRow": true}]},"isHidden": false}},{"columnId": "User
+          Message Count","columnProperty": {"conditionalFormatting": {"rows": [{"operator": "IS","value": "0","plotAsBand":
+          false,"fontProperties": {"color": "#47515F","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {"color": "#ddd"},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow":
+          true},{"operator": "IS_NOT_NULL","value": "0","plotAsBand": false,"fontProperties": {"bold": true,"italic": false,"strikeThrough":
+          false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId":
+          "User Message Count","isHighlightRow": false},{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties":
+          {"color": "#BEC6D0","bold": false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType":
+          "SOLID","solidBackgroundAttrs": {},"comparisonType": "VALUE_BASED","lhsColumnId": "User Message Count","isHighlightRow":
+          false}]},"isHidden": false}},{"columnId": "Model","columnProperty": {"wrapColumnText": true,"conditionalFormatting":
+          {"rows": [{"operator": "IS_NULL","value": "0","plotAsBand": false,"fontProperties": {"color": "#BEC6D0","bold":
+          false,"italic": true,"strikeThrough": false,"underline": false},"backgroundFormatType": "SOLID","solidBackgroundAttrs":
+          {},"comparisonType": "VALUE_BASED","lhsColumnId": "Model","isHighlightRow": false}]},"isHidden": false}}]}'
+      chart:
+        type: SCATTER
+        chart_columns:
+        - column_id: Conversation ID
+        - column_id: Conversation start time
+        - column_id: Model
+        - column_id: Response
+        - column_id: Timestamp
+        - column_id: User Action Type
+        - column_id: User Feedback Comments
+        - column_id: User Feedback Labels
+        - column_id: User Feedback Rating
+        - column_id: User Message Count
+        - column_id: User Name
+        - column_id: User Query
+        axis_configs:
+        - x:
+          - Timestamp
+          y:
+          - User Message Count
+          color:
+          - User Name
+          - User Feedback Rating
+          - Model
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}}},"columnProperties":
+          [{"columnId": "User Feedback Rating","columnProperty": {}},{"columnId": "User Query","columnProperty": {}},{"columnId":
+          "User Action Type","columnProperty": {}},{"columnId": "Timestamp","columnProperty": {}},{"columnId": "User Message
+          Count","columnProperty": {}},{"columnId": "User Name","columnProperty": {}},{"columnId": "Model","columnProperty":
+          {}}],"axisProperties": [{"id": "56f14255-19d8-495b-be11-88331b948031","properties": {"axisType": "Y","linkedColumns":
+          ["User Message Count"],"isOpposite": false}},{"id": "812013a7-3532-46d2-b14b-b5f389116b9e","properties": {"axisType":
+          "X","linkedColumns": ["Timestamp"]}}]}'
+      display_mode: TABLE_MODE
+    viz_guid: f9752601-edd9-4faf-b12a-edecd5cf8b70
+  - id: Viz_20
+    answer:
+      name: Downvoted Conversations
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Conversations] [User Feedback Rating] = ''down_vote'' [Conversation Origin] = ''liveboard'''
+      answer_columns:
+      - name: Conversations
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        ordered_column_ids:
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        axis_configs:
+        - y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Conversations","columnProperty": {}}],"axisProperties": [{"id": "dd28d4b7-6fe8-4e99-828c-d1c3d8213513","properties":
+          {"axisType": "Y","linkedColumns": ["Conversations"],"isOpposite": false}},{"id": "2f2f2c9d-e1a5-479d-85d4-91379893d5f5","properties":
+          {"axisType": "X"}}],"seriesColors": [{"serieName": "Conversations","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 9103b066-208f-4034-a0d8-ca1d9067ddc1
+  - id: Viz_21
+    answer:
+      name: Conversations
+      description: Weekly
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: '[Timestamp] [Timestamp].weekly [Conversations]'
+      answer_columns:
+      - name: Conversations
+      - name: Week(Timestamp)
+      table:
+        table_columns:
+        - column_id: Conversations
+          show_headline: false
+        - column_id: Week(Timestamp)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Timestamp)
+        - Conversations
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Conversations
+        - column_id: Week(Timestamp)
+        axis_configs:
+        - x:
+          - Week(Timestamp)
+          y:
+          - Conversations
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","dataFieldArea":
+          "column"}},"columnProperties": [{"columnId": "Week(Timestamp)","columnProperty": {}},{"columnId": "Conversations","columnProperty":
+          {}}],"axisProperties": [{"id": "4f4cf8dd-34f2-4de5-a879-2827385c08e0","properties": {"axisType": "Y","linkedColumns":
+          ["Conversations"],"isOpposite": false}},{"id": "f5083e4f-3228-44f9-bc40-afc54c61a109","properties": {"axisType":
+          "X","linkedColumns": ["Week(Timestamp)"]}}],"seriesColors": [{"serieName": "Conversations","color": "#8C62F5"}],"systemSeriesColors":
+          [{"serieName": "Conversations","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: c50cf430-910a-45e2-bb0f-8a09004a8f66
+  - id: Viz_22
+    answer:
+      name: Questions asked
+      description: Weekly
+      tables:
+      - id: 'TS: Spotter Analytics'
+        name: 'TS: Spotter Analytics'
+      search_query: unique count [Request ID] [User Action Type].'ask query' [User Action Type].'edit user query' [Timestamp].weekly
+      answer_columns:
+      - name: Unique Number of Request ID
+      - name: Week(Timestamp)
+      table:
+        table_columns:
+        - column_id: Unique Number of Request ID
+          show_headline: false
+        - column_id: Week(Timestamp)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Timestamp)
+        - Unique Number of Request ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Request ID
+        - column_id: Week(Timestamp)
+        axis_configs:
+        - x:
+          - Week(Timestamp)
+          y:
+          - Unique Number of Request ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"customProps": "{\"showLabel\":true,\"showComparison\":true,\"showSparkline\":true,\"showAnomalies\":false,\"showBounds\":true,\"customCompare\":\"PREV_AVAILABLE\"}","pivotSummariesState":
+          {}}},"columnProperties": [{"columnId": "Week(Timestamp)","columnProperty": {}},{"columnId": "Unique Number of Request
+          ID","columnProperty": {}}],"axisProperties": [{"id": "8eb40f1d-d6e8-4991-b1b5-9f46a1f5ad2f","properties": {"axisType":
+          "Y","linkedColumns": ["Unique Number of Request ID"],"isOpposite": false}},{"id": "07eaf092-e787-455d-9a9e-57e125596982","properties":
+          {"axisType": "X","linkedColumns": ["Week(Timestamp)"]}}],"seriesColors": [{"serieName": "2070042e-6615-4a82-b9d1-25441ee019f7","color":
+          "#747E8C"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 15f7a3a9-9bee-4737-a1f8-9f60b868f229
+  filters:
+  - column:
+    - Timestamp
+    is_mandatory: false
+    date_filter:
+      type: LAST_N_PERIOD
+      number: 90
+      oper: '='
+      date_period: DAY
+    display_name: ''
+  - column:
+    - Org Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Model
+    is_mandatory: false
+    is_single_value: false
+    display_name: Model
+  - column:
+    - User Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Conversation Origin
+    excluded_visualizations:
+    - Viz_13
+    - Viz_16
+    - Viz_11
+    - Viz_8
+    - Viz_9
+    - Viz_18
+    - Viz_19
+    - Viz_20
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Liveboard Name
+    excluded_visualizations:
+    - Viz_18
+    - Viz_7
+    - Viz_14
+    - Viz_1
+    - Viz_16
+    - Viz_6
+    - Viz_3
+    - Viz_11
+    - Viz_21
+    - Viz_2
+    - Viz_5
+    - Viz_15
+    - Viz_12
+    - Viz_19
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tabs:
+    - name: Overview
+      description: ''
+      tiles:
+      - visualization_id: Viz_6
+        x: 0
+        y: 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_21
+        x: 3
+        y: 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_3
+        x: 0
+        y: 12
+        height: 4
+        width: 4
+      - visualization_id: Viz_14
+        x: 9
+        y: 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_1
+        x: 8
+        y: 4
+        height: 4
+        width: 4
+      - visualization_id: Viz_7
+        x: 0
+        y: 4
+        height: 4
+        width: 4
+      - visualization_id: Viz_5
+        x: 4
+        y: 8
+        height: 4
+        width: 4
+      - visualization_id: Viz_2
+        x: 4
+        y: 12
+        height: 4
+        width: 4
+      - visualization_id: Viz_12
+        x: 0
+        y: 8
+        height: 4
+        width: 4
+      - visualization_id: Viz_15
+        x: 4
+        y: 4
+        height: 4
+        width: 4
+      - visualization_id: Viz_10
+        x: 8
+        y: 8
+        height: 4
+        width: 4
+      - visualization_id: Viz_22
+        x: 6
+        y: 0
+        height: 4
+        width: 3
+      id: 39f17aa4-88d7-4e8b-80d3-fa6199010832
+    - name: Homepage Conversations
+      description: ''
+      tiles:
+      - visualization_id: Viz_17
+        x: 0
+        y: 0
+        height: 2
+        width: 8
+      - visualization_id: Viz_16
+        x: 8
+        y: 0
+        height: 2
+        width: 2
+      - visualization_id: Viz_18
+        x: 0
+        y: 2
+        height: 8
+        width: 12
+      - visualization_id: Viz_11
+        x: 10
+        y: 0
+        height: 2
+        width: 2
+      - visualization_id: Viz_19
+        x: 0
+        y: 19
+        height: 8
+        width: 12
+      id: c7297568-17a0-40b4-a4d7-e0f3eba69905
+    - name: Liveboard Conversations
+      description: ''
+      tiles:
+      - visualization_id: Viz_4
+        x: 0
+        y: 0
+        height: 2
+        width: 8
+      - visualization_id: Viz_9
+        x: 8
+        y: 0
+        height: 2
+        width: 2
+      - visualization_id: Viz_20
+        x: 10
+        y: 0
+        height: 2
+        width: 2
+      - visualization_id: Viz_13
+        x: 0
+        y: 2
+        height: 8
+        width: 12
+      - visualization_id: Viz_8
+        x: 0
+        y: 10
+        height: 8
+        width: 12
+      id: 37c70355-02e3-4425-88ae-f8d1351e94d8
+  ordered_chips:
+  - name: Timestamp
+    type: FILTER
+  - name: Org Name
+    type: FILTER
+  - name: Model
+    type: FILTER
+  - name: User Name
+    type: FILTER
+  - name: Conversation Origin
+    type: FILTER
+  - name: Liveboard Name
+    type: FILTER

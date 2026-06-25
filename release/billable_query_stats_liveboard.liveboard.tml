@@ -1,0 +1,635 @@
+liveboard:
+  name: 'Billable Query Stats Liveboard '
+  description: This liveboard includes billable query information for the query-based consumption pricing model.
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Query Count, Daily
+      description: 'last 30 days '
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      formulas:
+      - id: formula_Cumulative Count QueryID
+        name: Cumulative Count QueryID
+        expr: cumulative_sum ( group_unique_count ( [Query ID] ) , [Query Start Date] )
+        was_auto_generated: false
+      search_query: '[Query Start Date] [Query Start Date].daily unique count [Query ID] [Query Start Date] = ''last 30 days'''
+      answer_columns:
+      - name: Day(Query Start Date)
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Day(Query Start Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Day(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Day(Query Start Date)
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - x:
+          - Day(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"markersEnabled": false},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Day(Query
+          Start Date)","columnProperty": {}},{"columnId": "Unique Number of Query ID","columnProperty": {}}],"axisProperties":
+          [{"id": "02140362-c98c-47ac-aed7-f9f3099dafa6","properties": {"axisType": "X","linkedColumns": ["Day(Query Start
+          Date)"]}},{"id": "e62d2c63-3d39-4c0d-b834-500426796dcf","properties": {"axisType": "Y","linkedColumns": ["Unique
+          Number of Query ID"],"name": "Billable Query Count","isOpposite": false}}],"systemSeriesColors": [{"serieName":
+          "Unique Number of Query ID","color": "#747E8C"}]}'
+      display_mode: CHART_MODE
+    viz_guid: ab19cf40-c51c-44de-ad21-410c454cb1ad
+  - id: Viz_2
+    answer:
+      name: Total Query Count
+      description: all time
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID]
+      answer_columns:
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty":
+          {}}]}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {}},"axisProperties": [{"id": "e706de47-e2aa-4b8c-b0a2-8a8a3f6ef225","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of Query ID"],"isOpposite": false}},{"id": "01f6dcff-c478-4dea-90f5-cdce30078568","properties":
+          {"axisType": "X"}}]}'
+      display_mode: CHART_MODE
+    viz_guid: 48129020-0358-47bc-b40e-c888cdd74cc3
+  - id: Viz_3
+    answer:
+      name: Query Count, Monthly
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date].monthly [Query Start Date] >= '01/01/2021'
+      answer_columns:
+      - name: Month(Query Start Date)
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Month(Query Start Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Month(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Month(Query Start Date)
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - x:
+          - Month(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {},"showStackedLabels": true,"allLabels": false},"columnProperties": [{"columnId": "Month(Query Start Date)","columnProperty":
+          {"dataLabels": true}},{"columnId": "Unique Number of Query ID","columnProperty": {"dataLabels": true}}],"axisProperties":
+          [{"id": "0bbb7b74-1410-4ba9-bafe-1f4e8fa3f51d","properties": {"axisType": "X","linkedColumns": ["Month(Query Start
+          Date)"],"name": "Monthly Query Start Date"}},{"id": "1b80de31-119d-4ba6-be08-54d368e72689","properties": {"axisType":
+          "Y","linkedColumns": ["Unique Number of Query ID"],"name": "Billable Query Count","isOpposite": false}}],"seriesColors":
+          [{"serieName": "Unique Number of Query ID","color": "#2E75F0"}],"systemSeriesColors": [{"serieName": "Unique Number
+          of Query ID","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 927f3dc2-fabc-4afb-b791-619c0909a5e8
+  - id: Viz_4
+    answer:
+      name: Count of Queries by User Name
+      description: all time
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [User Name] sort by unique count [Query ID] descending
+      answer_columns:
+      - name: Unique Number of Query ID
+        custom_name: Query Count
+        sort_info:
+          category: DEFAULT
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        - column_id: User Name
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - User Name
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {}},"columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty": {}},{"columnId": "User Name","columnProperty":
+          {}}],"axisProperties": [{"id": "34253289-42d0-44d8-9d68-9329e14a7f12","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of Query ID"],"isOpposite": false}},{"id": "8f3d9a3b-7d5e-4702-95d3-8c0a78691a12","properties":
+          {"axisType": "X","linkedColumns": ["User Name"]}}],"systemSeriesColors": [{"serieName": "Unique Number of Query
+          ID","color": "#8C62F5"}]}'
+      display_mode: TABLE_MODE
+    viz_guid: bfa5f1e5-bcd7-44ff-86bc-3f7d038df750
+  - id: Viz_5
+    answer:
+      name: Query Count by Connection
+      description: all time
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: '[Connection Name] unique count [Query ID] sort by unique count [Query ID] descending unique count [User
+        ID]'
+      answer_columns:
+      - name: Connection Name
+      - name: Unique Number of Query ID
+        custom_name: Query Count
+        sort_info:
+          category: DEFAULT
+      - name: Unique Number of User ID
+      table:
+        table_columns:
+        - column_id: Connection Name
+          show_headline: false
+        - column_id: Unique Number of Query ID
+          show_headline: false
+        - column_id: Unique Number of User ID
+          show_headline: false
+        ordered_column_ids:
+        - Connection Name
+        - Unique Number of Query ID
+        - Unique Number of User ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","widthState": [{"columnId": "Unique Number of Query ID","width": 206.0},{"columnId":
+          "Connection Name","width": 221.20713806152344}],"showTableFooter": false}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Connection Name
+        - column_id: Unique Number of Query ID
+        - column_id: Unique Number of User ID
+        axis_configs:
+        - x:
+          - Connection Name
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {}},"columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty": {}},{"columnId": "Connection
+          Name","columnProperty": {}},{"columnId": "Unique Number of User ID","columnProperty": {}}],"axisProperties": [{"id":
+          "d81aa1c7-4a6c-47a0-9474-8d005b23b197","properties": {"axisType": "Y","linkedColumns": ["Unique Number of Query
+          ID"],"isOpposite": false}},{"id": "b2e68149-3e1f-4160-80ba-54ef0577c6c9","properties": {"axisType": "X","linkedColumns":
+          ["Connection Name"]}}],"systemSeriesColors": [{"serieName": "credit consumption report","color": "#FCC838"},{"serieName":
+          "demo connection","color": "#48D1E0"},{"serieName": "metrics connection","color": "#2E75F0"}]}'
+      display_mode: TABLE_MODE
+    viz_guid: 8612369a-74ba-4d98-adee-12b7a9c4950b
+  - id: Viz_6
+    answer:
+      name: Top Users by Query Count
+      description: top 15 active users in the last 30 days
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: by [User Name] top 15 by unique count [Query ID] [Query Start Date].'last 30 days'
+      answer_columns:
+      - name: Unique Number of Query ID
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        - column_id: User Name
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - User Name
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {},"showStackedLabels": true,"allLabels": true},"columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty":
+          {"dataLabels": true}},{"columnId": "User Name","columnProperty": {}}],"axisProperties": [{"id": "8e7d02d4-74df-45cf-95e9-091c0cc61fba","properties":
+          {"axisType": "X","linkedColumns": ["User Name"]}},{"id": "23b1b2dc-fdcc-4501-940e-7263849cb642","properties": {"axisType":
+          "Y","linkedColumns": ["Unique Number of Query ID"],"name": "Total Query Count","isOpposite": false}}],"systemSeriesColors":
+          [{"serieName": "Unique Number of Query ID","color": "#2E75F0"},{"serieName": "administrator","color": "#FCC838"},{"serieName":
+          "system user","color": "#48D1E0"},{"serieName": "user","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 76abcdfa-53b3-4022-bf87-7852bf9f28bb
+  - id: Viz_7
+    answer:
+      name: Total Query Count
+      description: last 60 days
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date] = 'last 60 days'
+      answer_columns:
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty":
+          {}}]}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {}},"axisProperties": [{"id": "3d4f38e6-e277-4721-9b7c-f88168ae4980","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of Query ID"],"isOpposite": false}},{"id": "5f7772ac-cfec-44a9-bd87-bdaa2c323620","properties":
+          {"axisType": "X"}}]}'
+      display_mode: CHART_MODE
+    viz_guid: 702a5155-2f89-4e8c-95cb-31f2dfc64b9e
+  - id: Viz_8
+    answer:
+      name: Count of Queries and Count of Users, Weekly
+      description: last 60 days
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date].'last 60 days' unique count [User Name] [Query Start Date]
+        [Query Start Date].weekly
+      answer_columns:
+      - name: Unique Number of Query ID
+      - name: Unique Number of User Name
+      - name: Week(Query Start Date)
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        - column_id: Unique Number of User Name
+          headline_aggregation: AVERAGE
+        - column_id: Week(Query Start Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Week(Query Start Date)
+        - Unique Number of Query ID
+        - Unique Number of User Name
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: LINE_STACKED_COLUMN
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        - column_id: Unique Number of User Name
+        - column_id: Week(Query Start Date)
+        axis_configs:
+        - x:
+          - Week(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        - x:
+          - Week(Query Start Date)
+          y:
+          - Unique Number of User Name
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {},"showStackedLabels": true},"columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty": {"dataLabels":
+          false}},{"columnId": "Week(Query Start Date)","columnProperty": {}},{"columnId": "Unique Number of User Name","columnProperty":
+          {}}],"axisProperties": [{"id": "4df32682-c47d-4c18-9224-5c559aa592d0","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of User Name"],"isOpposite": true}},{"id": "f66e8542-7ed1-4a9e-89e9-e61f7b6e2b2e","properties":
+          {"axisType": "Y","linkedColumns": ["Unique Number of Query ID"],"name": "Query Count","isOpposite": false}},{"id":
+          "f418bffa-77a1-4a91-856e-b69cf2070b52","properties": {"axisType": "X","linkedColumns": ["Week(Query Start Date)"],"name":
+          "Weekly Query Start Date"}}],"systemSeriesColors": [{"serieName": "Unique Number of Query ID","color": "#48D1E0"},{"serieName":
+          "total count user name","color": "#2E75F0"},{"serieName": "unique count user name","color": "#2E75F0"},{"serieName":
+          "Unique Number of User Name","color": "#2E75F0"},{"serieName": "total count query id","color": "#2E75F0"}]}'
+      display_mode: CHART_MODE
+    viz_guid: a06899e9-fbd0-4ffe-aa44-6c3e677715af
+  - id: Viz_9
+    answer:
+      name: Month of Year Query Count, by User Name, by Day
+      description: last 12 months
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] by [User Name] [Query Start Date].monthly [Query Start Date].'day of month' [Query
+        Start Date] = [Query Start Date].'last 12 months' [Query Start Date].'this month'
+      answer_columns:
+      - name: DAY_OF_MONTH(Query Start Date)
+        custom_name: Day of month Query Start Date
+      - name: Month(Query Start Date)
+        custom_name: Month Query Start Date
+      - name: Unique Number of Query ID
+        custom_name: Query Count
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: DAY_OF_MONTH(Query Start Date)
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Month(Query Start Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        - column_id: User Name
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - User Name
+        - Month(Query Start Date)
+        - DAY_OF_MONTH(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: PIVOT_TABLE
+        chart_columns:
+        - column_id: DAY_OF_MONTH(Query Start Date)
+        - column_id: Month(Query Start Date)
+        - column_id: Unique Number of Query ID
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          - DAY_OF_MONTH(Query Start Date)
+          y:
+          - Unique Number of Query ID
+          color:
+          - Month(Query Start Date)
+        - y:
+          - Unique Number of Query ID
+        - x:
+          - User Name
+          y:
+          - Unique Number of Query ID
+        - y:
+          - Unique Number of Query ID
+          color:
+          - Month(Query Start Date)
+        - x:
+          - User Name
+          y:
+          - Unique Number of Query ID
+          color:
+          - Month(Query Start Date)
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {"pivotState": {"fields": [{"dataField": "Month(Query Start Date)","sortBy": "value","sortBySummaryField": "Month(Query
+          Start Date)","sortOrder": "desc","expanded": false,"area": "column"}]}}},"columnProperties": [{"columnId": "Month(Query
+          Start Date)","columnProperty": {}},{"columnId": "Unique Number of Query ID","columnProperty": {}},{"columnId": "DAY_OF_MONTH(Query
+          Start Date)","columnProperty": {}},{"columnId": "User Name","columnProperty": {}}],"axisProperties": [{"id": "51851e12-15b5-40aa-9dc0-f57e67013fa0","properties":
+          {"axisType": "Y","linkedColumns": ["Unique Number of Query ID"],"isOpposite": false}},{"id": "9484c60b-9765-4990-97f6-04c7867d30b2","properties":
+          {"axisType": "X","linkedColumns": ["User Name","DAY_OF_MONTH(Query Start Date)"]}}]}'
+      display_mode: CHART_MODE
+    viz_guid: 56cccf88-07f5-4fd6-bc0e-3de3c6c3572d
+  - id: Viz_10
+    answer:
+      name: Query Count Trend
+      description: weekly
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date] = 'last 52 weeks' [Query Start Date].weekly
+      answer_columns:
+      - name: Unique Number of Query ID
+      - name: Week(Query Start Date)
+      table:
+        table_columns:
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        - column_id: Week(Query Start Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Week(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty":
+          {}}]}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Query ID
+        - column_id: Week(Query Start Date)
+        axis_configs:
+        - x:
+          - Week(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {}},"columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty": {}},{"columnId": "Week(Query
+          Start Date)","columnProperty": {}}],"axisProperties": [{"id": "a2f03649-6b18-463c-9b3e-5d0ce03cdadc","properties":
+          {"axisType": "Y","linkedColumns": ["Unique Number of Query ID"],"isOpposite": false}},{"id": "1f4c3461-c530-4376-958c-7a617f1ac398","properties":
+          {"axisType": "X","linkedColumns": ["Week(Query Start Date)"]}}],"systemSeriesColors": [{"serieName": "Unique Number
+          of Query ID","color": "#8C62F5"}]}'
+      display_mode: CHART_MODE
+    viz_guid: d0bd4148-bd55-41cc-ba5a-545c269d21a2
+  - id: Viz_11
+    answer:
+      name: Query Count Trend
+      description: monthly
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date].monthly [Query Start Date].'last 12 months'
+      answer_columns:
+      - name: Month(Query Start Date)
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Month(Query Start Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Unique Number of Query ID
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Month(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","columnProperties": [{"columnId": "Unique Number of Query ID","columnProperty":
+          {}}]}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Query Start Date)
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - x:
+          - Month(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {}},"axisProperties": [{"id": "642ec813-557f-4b60-a36e-75d70677c122","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of Query ID"],"isOpposite": false}},{"id": "4b3d6741-44ce-41bc-90c9-d2925ffd0217","properties":
+          {"axisType": "X","linkedColumns": ["Month(Query Start Date)"]}}],"seriesColors": [{"serieName": "Unique Number of
+          Query ID","color": "#48D1E0"}],"systemSeriesColors": [{"serieName": "Unique Number of Query ID","color": "#747E8C"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 9a2a044b-5024-4eb2-9068-f64e8361f981
+  - id: Viz_12
+    answer:
+      name: Query Count Trend
+      description: daily
+      tables:
+      - id: 'TS: Query Stats Worksheet'
+        name: 'TS: Query Stats Worksheet'
+      search_query: unique count [Query ID] [Query Start Date].daily [Query Start Date].'last 365 days'
+      answer_columns:
+      - name: Day(Query Start Date)
+      - name: Unique Number of Query ID
+      table:
+        table_columns:
+        - column_id: Day(Query Start Date)
+          show_headline: false
+        - column_id: Unique Number of Query ID
+          show_headline: false
+        ordered_column_ids:
+        - Day(Query Start Date)
+        - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Day(Query Start Date)
+        - column_id: Unique Number of Query ID
+        axis_configs:
+        - x:
+          - Day(Query Start Date)
+          y:
+          - Unique Number of Query ID
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"responsiveLayoutPreference": "AUTO_ON","chartSpecific":
+          {}},"axisProperties": [{"id": "e3de5752-5623-4403-b237-9c33e2321fa2","properties": {"axisType": "Y","linkedColumns":
+          ["Unique Number of Query ID"],"isOpposite": false}},{"id": "b139e3dd-876c-4b40-8e43-22985cbccf28","properties":
+          {"axisType": "X","linkedColumns": ["Day(Query Start Date)"]}}],"systemSeriesColors": [{"serieName": "Unique Number
+          of Query ID","color": "#2770ef"}]}'
+      display_mode: CHART_MODE
+    viz_guid: 8185219c-10ca-4be0-9154-9b9c68dde7be
+  filters:
+  - column:
+    - Connection Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - User Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Org Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      y: 8
+      height: 8
+      width: 6
+    - visualization_id: Viz_2
+      x: 9
+      y: 0
+      height: 2
+      width: 3
+    - visualization_id: Viz_3
+      x: 0
+      y: 4
+      height: 4
+      width: 12
+    - visualization_id: Viz_4
+      x: 6
+      y: 12
+      height: 4
+      width: 6
+    - visualization_id: Viz_5
+      x: 6
+      y: 8
+      height: 4
+      width: 6
+    - visualization_id: Viz_6
+      x: 0
+      y: 16
+      height: 8
+      width: 6
+    - visualization_id: Viz_7
+      x: 9
+      y: 2
+      height: 2
+      width: 3
+    - visualization_id: Viz_8
+      x: 6
+      y: 16
+      height: 8
+      width: 6
+    - visualization_id: Viz_9
+      x: 0
+      y: 24
+      height: 8
+      width: 12
+    - visualization_id: Viz_10
+      x: 3
+      y: 0
+      height: 4
+      width: 3
+    - visualization_id: Viz_11
+      x: 6
+      y: 0
+      height: 4
+      width: 3
+    - visualization_id: Viz_12
+      x: 0
+      y: 0
+      height: 4
+      width: 3
+  ordered_chips:
+  - name: Connection Name
+    type: FILTER
+  - name: User Name
+    type: FILTER
+  - name: Org Name
+    type: FILTER

@@ -1,0 +1,248 @@
+obj_id: Claims-ClaimsInventory-be98069b
+model:
+  name: Claims - Claims Inventory
+  description: CXP Claims Inventory
+  model_tables:
+  - name: MART_CLAIMS_INVENTORY_REPORT
+    obj_id: MART_CLAIMS_INVENTORY_REPORT-72240b8a
+  formulas:
+  - id: formula_Claims Count
+    name: Claims Count
+    expr: unique count ( [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID] )
+  - id: formula_Closing Ratio
+    name: Closing Ratio
+    expr: '[formula_Closed Claims] / ifnull ( ( [formula_New Claims] + [formula_Transfer IN] + [formula_Reopen] - [formula_Transfer
+      OUT] ) , 0 )'
+  - id: formula_Closed Claims
+    name: Closed Claims
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::CLOSED_DATE] >= [Begin Date] and [MART_CLAIMS_INVENTORY_REPORT::CLOSED_DATE]  <=
+      [End Date] ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID] )
+  - id: formula_Ending Inventory
+    name: Ending Inventory
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::CLAIMANT_STATUS_ID] != 5 and [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ENTRY_DATE]
+      < [End Date] ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID] )
+  - id: formula_New Claims
+    name: New Claims
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ENTRY_DATE] >= [Begin Date] and [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ENTRY_DATE]
+      <= [End Date] ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID] )
+  - id: formula_Reopen
+    name: Reopen
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::REOPENED_DATE] >= [Begin Date] and [MART_CLAIMS_INVENTORY_REPORT::REOPENED_DATE]  <=
+      [End Date] ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID] )
+  - id: formula_Transfer IN
+    name: Transfer IN
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::METRIC_TYPE] = 'TRANSFER_IN' ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID]
+      )
+  - id: formula_Transfer OUT
+    name: Transfer OUT
+    expr: unique_count_if ( ( [MART_CLAIMS_INVENTORY_REPORT::METRIC_TYPE] = 'TRANSFER_OUT' ) , [MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID]
+      )
+  columns:
+  - name: Claim Entry Date
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLAIM_ENTRY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Timestamp when the claim was initially entered into the system, establishing the starting point for processing
+        timelines and aging analysis.
+  - name: Claims Count
+    formula_id: formula_Claims Count
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Total numeric count of claims within a specific grouping or time period for volume analysis and workload
+        measurement across organizational units.
+  - name: New Claims
+    formula_id: formula_New Claims
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Count of newly received claims during a specific period, measuring intake volume and workload additions
+        to the claims processing inventory.
+  - name: Ending Inventory
+    formula_id: formula_Ending Inventory
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Number of open claims remaining at the end of a reporting period, indicating pending workload and processing
+        capacity requirements.
+  - name: Closed Claims
+    formula_id: formula_Closed Claims
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Count of claims that have been completed and finalized during the reporting period, measuring processing
+        output and examiner productivity.
+  - name: Reopen
+    formula_id: formula_Reopen
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Number of previously closed claims that have been reopened for additional processing, indicating quality
+        issues or new developments requiring attention.
+  - name: Transfer IN
+    formula_id: formula_Transfer IN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Count of claims received from other examiners or organizational units through internal reassignment for
+        workload balancing and specialization.
+  - name: Transfer OUT
+    formula_id: formula_Transfer OUT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Count of claims transferred to other examiners or units for redistribution, specialization, or workload
+        management purposes within the organization.
+  - name: Closing Ratio
+    formula_id: formula_Closing Ratio
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      ai_context: Performance metric calculating the ratio of closed claims to total claims handled, measuring examiner efficiency
+        and processing effectiveness.
+  - name: Insurance Line Id
+    column_id: MART_CLAIMS_INVENTORY_REPORT::INSURANCE_LINE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Numeric identifier linking claims to specific insurance product lines for organizational categorization
+        and reporting within the business structure.
+  - name: Office Id
+    column_id: MART_CLAIMS_INVENTORY_REPORT::OFFICE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      is_hidden: true
+      ai_context: Numeric identifier for the office location handling the claim, enabling geographic analysis and regional
+        performance tracking within the organization.
+  - name: Claim Number
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLAIM_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Human-readable alphanumeric claim reference number used for external communication and business correspondence
+        with claimants and stakeholders.
+  - name: Claimant Type
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLAIMANT_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Classification category that defines the nature or type of claimant involved in the insurance claim for
+        appropriate processing and handling procedures.
+  - name: Claims Inventory Report Key
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLAIMS_INVENTORY_REPORT_KEY
+    properties:
+      column_type: ATTRIBUTE
+      is_hidden: true
+      ai_context: Composite key field used for aggregating and organizing claims data within inventory reports for analytical
+        and operational reporting purposes.
+  - name: Closed Date
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLOSED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Date when the claim was officially closed and finalized, marking completion of processing activities and
+        enabling cycle time calculations.
+  - name: Examiner
+    column_id: MART_CLAIMS_INVENTORY_REPORT::EXAMINER_CODE
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Identifier of the claims examiner currently assigned to handle the claim, enabling individual performance
+        tracking and workload management.
+  - name: Inventory Effective Date
+    column_id: MART_CLAIMS_INVENTORY_REPORT::INVENTORY_EFFECTIVE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Reference date for inventory calculations and reporting periods, establishing the temporal context for claims
+        counting and analysis.
+  - name: Manager
+    column_id: MART_CLAIMS_INVENTORY_REPORT::MANAGER
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Identifier of the supervisory manager overseeing the claim processing, supporting hierarchical reporting
+        and management accountability structures.
+  - name: Metric Date
+    column_id: MART_CLAIMS_INVENTORY_REPORT::METRIC_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Specific date used for performance measurement calculations and reporting, providing temporal alignment
+        for analytical comparisons and trends.
+  - name: Metric Type
+    column_id: MART_CLAIMS_INVENTORY_REPORT::METRIC_TYPE
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Category defining the type of claims activity being measured, such as new claims, closures, or transfers,
+        for specific performance analysis.
+  - name: Office
+    column_id: MART_CLAIMS_INVENTORY_REPORT::OFFICE_DESC
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Name of the physical office location or regional unit responsible for processing the claim, supporting geographic
+        reporting and management oversight.
+  - name: Reopened Date
+    column_id: MART_CLAIMS_INVENTORY_REPORT::REOPENED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Date when a previously closed claim was reopened for additional processing, tracking quality issues and
+        post-closure developments.
+  - name: Source Examiner Code
+    column_id: MART_CLAIMS_INVENTORY_REPORT::SOURCE_EXAMINER_CODE
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Code identifying the originating examiner in claim transfer transactions, tracking workload movement sources
+        for redistribution analysis.
+  - name: Target Examiner Code
+    column_id: MART_CLAIMS_INVENTORY_REPORT::TARGET_EXAMINER_CODE
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Code identifying the receiving examiner in claim transfer transactions, tracking workload movement destinations
+        for capacity planning.
+  - name: Claim Id
+    column_id: MART_CLAIMS_INVENTORY_REPORT::CLAIM_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Unique numeric identifier assigned to each insurance claim for system tracking and database referencing
+        within the claims inventory management system.
+  - name: Insurance Line Code
+    column_id: MART_CLAIMS_INVENTORY_REPORT::INSURANCE_LINE_CODE
+    properties:
+      column_type: ATTRIBUTE
+      ai_context: Abbreviated text code representing insurance product lines such as workers compensation, general liability,
+        and personal lines for quick identification.
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: true
+  parameters:
+  - id: 9e0b0993-10e0-45d9-9472-20b3be546d2e
+    name: Begin Date
+    data_type: DATE
+    default_value: 01/01/2026
+    description: ''
+  - id: bc06aa75-c7ac-4dc0-afc8-cf142071aad4
+    name: Date Range TEST
+    data_type: DATE
+    default_value: 01/01/2026
+    range_config:
+      range_min: 01/01/2023
+      range_max: 12/31/2026
+      include_min: true
+      include_max: true
+    description: ''
+  - id: d4c1baa2-1f36-4024-8106-aeff04154f6b
+    name: End Date
+    data_type: DATE
+    default_value: 12/31/2026
+    description: ''

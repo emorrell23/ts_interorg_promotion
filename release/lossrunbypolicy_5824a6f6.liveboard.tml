@@ -1,0 +1,236 @@
+obj_id: LossRunbyPolicy-5824a6f6
+liveboard:
+  name: Loss Run by Policy
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Policy Details
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      search_query: '[Insurer Code] [Claim Number] [Loss Date] [Loss Date].daily [Claimant Name] [Examiner Code] [Claimant
+        Hire Date] [Claimant Hire Date].daily [Policy Number] [Insured Name] [Claimant Type Desc] [Claimant Status Desc] [Closed
+        Date] [Closed Date].daily [Litigated] [Birth Date] [Birth Date].daily [PD Rating] [Occupation Desc] [Avg Weekly Wage]
+        [Body Part Desc] [Nature Of Injury Desc] [Injury Cause Desc] [Injury Desc] [Class Code] [Injury Location] [Insured
+        Location] [Policy Inception Date] [Policy Inception Date].daily [Policy Expiration Date] [Policy Expiration Date].daily'
+      answer_columns:
+      - name: Avg Weekly Wage
+      - name: Body Part Desc
+      - name: Claim Number
+      - name: Claimant Name
+      - name: Claimant Status Desc
+      - name: Claimant Type Desc
+      - name: Class Code
+      - name: Day(Birth Date)
+        custom_name: Birth Date
+        dynamic_title: Birth Date
+      - name: Day(Claimant Hire Date)
+        custom_name: Claimant Hire Date
+        dynamic_title: Claimant Hire Date
+      - name: Day(Closed Date)
+        custom_name: Closed Date
+        dynamic_title: Closed Date
+      - name: Day(Loss Date)
+        custom_name: Loss Date
+        dynamic_title: Loss Date
+      - name: Day(Policy Expiration Date)
+        custom_name: Policy Expiration Date
+        dynamic_title: Policy Expiration Date
+      - name: Day(Policy Inception Date)
+      - name: Examiner Code
+      - name: Injury Cause Desc
+      - name: Injury Desc
+      - name: Injury Location
+      - name: Insured Location
+      - name: Insured Name
+      - name: Insurer Code
+      - name: Litigated
+      - name: Nature Of Injury Desc
+      - name: Occupation Desc
+      - name: PD Rating
+      - name: Policy Number
+      table:
+        table_columns:
+        - column_id: Avg Weekly Wage
+          show_headline: false
+        - column_id: Body Part Desc
+          show_headline: false
+        - column_id: Claim Number
+          show_headline: false
+        - column_id: Claimant Name
+          show_headline: false
+        - column_id: Claimant Status Desc
+          show_headline: false
+        - column_id: Claimant Type Desc
+          show_headline: false
+        - column_id: Class Code
+          show_headline: false
+        - column_id: Day(Birth Date)
+          show_headline: false
+        - column_id: Day(Claimant Hire Date)
+          show_headline: false
+        - column_id: Day(Closed Date)
+          show_headline: false
+        - column_id: Day(Loss Date)
+          show_headline: false
+        - column_id: Day(Policy Expiration Date)
+          show_headline: false
+        - column_id: Day(Policy Inception Date)
+          show_headline: false
+        - column_id: Examiner Code
+          show_headline: false
+        - column_id: Injury Cause Desc
+          show_headline: false
+        - column_id: Injury Desc
+          show_headline: false
+        - column_id: Injury Location
+          show_headline: false
+        - column_id: Insured Location
+          show_headline: false
+        - column_id: Insured Name
+          show_headline: false
+        - column_id: Insurer Code
+          show_headline: false
+        - column_id: Litigated
+          show_headline: false
+        - column_id: Nature Of Injury Desc
+          show_headline: false
+        - column_id: Occupation Desc
+          show_headline: false
+        - column_id: PD Rating
+          show_headline: false
+        - column_id: Policy Number
+          show_headline: false
+        ordered_column_ids:
+        - Insurer Code
+        - Claim Number
+        - Day(Loss Date)
+        - Claimant Name
+        - Examiner Code
+        - Day(Claimant Hire Date)
+        - Policy Number
+        - Insured Name
+        - Claimant Type Desc
+        - Claimant Status Desc
+        - Day(Closed Date)
+        - Litigated
+        - Day(Birth Date)
+        - PD Rating
+        - Occupation Desc
+        - Avg Weekly Wage
+        - Body Part Desc
+        - Nature Of Injury Desc
+        - Injury Cause Desc
+        - Injury Desc
+        - Class Code
+        - Injury Location
+        - Insured Location
+        - Day(Policy Inception Date)
+        - Day(Policy Expiration Date)
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Insurer Code","Claim Number","Day(Loss Date)","Claimant
+          Name","Examiner Code","Day(Claimant Hire Date)","Injury Location","Policy Number","Day(Policy Inception Date)","Day(Policy
+          Expiration Date)","Insured Name","Insured Location","Claimant Type Desc","Claimant Status Desc","Day(Closed Date)","Litigated","Day(Birth
+          Date)","PD Rating","Occupation Desc","Avg Weekly Wage","Body Part Desc","Nature Of Injury Desc","Injury Cause Desc","Injury
+          Desc","Class Code"],"columnProperties": [{"columnId": "Insurer Code","columnProperty": {}},{"columnId": "Claim Number","columnProperty":
+          {}},{"columnId": "Day(Loss Date)","columnProperty": {}}]}'
+      chart:
+        type: SCATTER
+        chart_columns:
+        - column_id: Avg Weekly Wage
+        - column_id: Body Part Desc
+        - column_id: Claim Number
+        - column_id: Claimant Name
+        - column_id: Claimant Status Desc
+        - column_id: Claimant Type Desc
+        - column_id: Class Code
+        - column_id: Day(Birth Date)
+        - column_id: Day(Claimant Hire Date)
+        - column_id: Day(Closed Date)
+        - column_id: Day(Loss Date)
+        - column_id: Day(Policy Expiration Date)
+        - column_id: Day(Policy Inception Date)
+        - column_id: Examiner Code
+        - column_id: Injury Cause Desc
+        - column_id: Injury Desc
+        - column_id: Injury Location
+        - column_id: Insured Location
+        - column_id: Insured Name
+        - column_id: Insurer Code
+        - column_id: Litigated
+        - column_id: Nature Of Injury Desc
+        - column_id: Occupation Desc
+        - column_id: PD Rating
+        - column_id: Policy Number
+        axis_configs:
+        - x:
+          - Day(Loss Date)
+          y:
+          - Insured Location
+          color:
+          - Litigated
+          - Claimant Status Desc
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"gridLines": {},"responsiveLayoutPreference": "USER_PREFERRED_ON","chartSpecific":
+          {"dataFieldArea": "column"},"kpiDisplayProperties": {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation":
+          "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly": true}},"columnProperties": [{"columnId": "Insurer Code","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Claim Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Day(Loss Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure
+          values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Litigated","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant Status Desc","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Avg Weekly Wage","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Insured Location","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}}],"axisProperties": [{"id": "afc57a4a-c848-4be2-b895-c1a0b2a2f6c4","properties": {"axisType": "Y","linkedColumns":
+          ["Insured Location"],"isOpposite": false}},{"id": "eab36d3f-b416-4999-827d-6b05a0595964","properties": {"axisType":
+          "X","linkedColumns": ["Day(Loss Date)"]}}]}'
+      display_mode: TABLE_MODE
+      dynamic_name: Policy Details
+    viz_guid: af77af09-406e-4bc8-954c-369443828afc
+  filters:
+  - column:
+    - Policy Number
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      y: 0
+      height: 8
+      width: 12
+  ordered_chips:
+  - name: Policy Number
+    type: FILTER
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: 'false'
+    - name: hide_group_description
+      value: 'true'
+    - name: hide_group_tile_description
+      value: 'false'
+    - name: hide_tile_description
+      value: 'false'
+    - name: kpi_hero_font_size
+      value: M

@@ -1,0 +1,89 @@
+obj_id: PotentialDuplicateNew-27c49149
+answer:
+  name: Potential Duplicate New
+  tables:
+  - id: Claims - Payments
+    name: Claims - Payments
+    obj_id: Claims-ab0d4cf0
+  search_query: '[Claimant Name] [Loss Date] [Loss Date].daily [Policy Jurisdiction Code] [Line Of Business Code] [Policy
+    Number] [Tax ID] [Claim Number]'
+  answer_columns:
+  - name: Claim Number
+  - name: Claimant Name
+  - name: Day(Loss Date)
+  - name: Line Of Business Code
+  - name: Policy Jurisdiction Code
+  - name: Policy Number
+  - name: Tax ID
+  table:
+    table_columns:
+    - column_id: Claim Number
+      show_headline: false
+    - column_id: Claimant Name
+      show_headline: false
+    - column_id: Day(Loss Date)
+      show_headline: false
+    - column_id: Line Of Business Code
+      show_headline: false
+    - column_id: Policy Jurisdiction Code
+      show_headline: false
+    - column_id: Policy Number
+      show_headline: false
+    - column_id: Tax ID
+      show_headline: false
+    ordered_column_ids:
+    - Claimant Name
+    - Day(Loss Date)
+    - Policy Jurisdiction Code
+    - Line Of Business Code
+    - Policy Number
+    - Tax ID
+    - Claim Number
+    client_state: ''
+    client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Claim Number","Claimant Name","Tax ID","Day(Loss
+      Date)","Policy Jurisdiction Code","Line Of Business Code","Policy Number"]}'
+  chart:
+    type: SCATTER
+    chart_columns:
+    - column_id: Claim Number
+    - column_id: Claimant Name
+    - column_id: Day(Loss Date)
+    - column_id: Line Of Business Code
+    - column_id: Policy Jurisdiction Code
+    - column_id: Policy Number
+    - column_id: Tax ID
+    axis_configs:
+    - x:
+      - Day(Loss Date)
+      y:
+      - Claim Number
+      color:
+      - Line Of Business Code
+    client_state: ''
+    client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+      {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+      true}},"columnProperties": [{"columnId": "Claimant Name","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+      true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure values","columnProperty":
+      {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+      true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId":
+      "Day(Loss Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+      "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+      true,"showPreviousValue": true}}},{"columnId": "Policy Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Line Of Business Code","columnProperty":
+      {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+      true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId":
+      "Claim Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+      "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+      true,"showPreviousValue": true}}}],"axisProperties": [{"id": "60e42743-89a8-44d7-81da-2e77119db5ec","properties": {"axisType":
+      "Y","linkedColumns": ["Claim Number"],"isOpposite": false}},{"id": "142c8f13-3ca1-4503-91b9-c2ddd9ace4ac","properties":
+      {"axisType": "X","linkedColumns": ["Day(Loss Date)"]}}]}'
+  display_mode: TABLE_MODE
+  parameter_values:
+  - key: ClaimantFirstName
+    value: Jack
+  - key: ClaimantLastName
+    value: Jones

@@ -1,0 +1,427 @@
+obj_id: PaymentDetail-cf35e489
+liveboard:
+  name: Payment Detail
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Payment Detail
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      search_query: '[Payment Method Desc] [Processed Date] [Processed Date].daily [Payment Type] [From Date] [From Date].daily
+        [Through Date] [Through Date].daily [Payment Amount] [Check Number] [Claim Number] [Insurer Code] [Reserve Type Desc]
+        [Claimant Name] [Policy Number] [Loss Date] [Loss Date].daily [Insured Name] [Claimant Status Desc] [Claimant Type
+        Desc] [Invoice Number] [Payment Type Id] > 0 [Payment Method Id] != 80 [Payment Type Id] sort by [Payment Amount]
+        descending [Payment Id]'
+      answer_columns:
+      - name: Check Number
+      - name: Claim Number
+      - name: Claimant Name
+        custom_name: Claimant
+        dynamic_title: Claimant
+      - name: Claimant Status Desc
+        custom_name: Claimant Status
+        dynamic_title: Claimant Status
+      - name: Claimant Type Desc
+        custom_name: Claimant Type
+        dynamic_title: Claimant Type
+      - name: Day(From Date)
+        custom_name: From Date
+        dynamic_title: From Date
+      - name: Day(Loss Date)
+        custom_name: Loss Date
+        dynamic_title: Loss Date
+      - name: Day(Processed Date)
+        custom_name: Processed
+        dynamic_title: Processed
+      - name: Day(Through Date)
+        custom_name: Through Date
+        dynamic_title: Through Date
+      - name: Insured Name
+        custom_name: Insured
+        dynamic_title: Insured
+      - name: Insurer Code
+      - name: Invoice Number
+      - name: Payment Id
+      - name: Payment Method Desc
+        custom_name: Method
+        dynamic_title: Method
+      - name: Payment Type
+        custom_name: Description
+        dynamic_title: Description
+      - name: Payment Type Id
+        custom_name: Type
+        dynamic_title: Type
+      - name: Policy Number
+      - name: Reserve Type Desc
+        custom_name: Reserve Type
+        dynamic_title: Reserve Type
+      - name: Total Payment Amount
+        custom_name: Payment Amount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: NONE
+            decimals: 2.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+        dynamic_title: Payment Amount
+        sort_info:
+          category: DEFAULT
+      table:
+        table_columns:
+        - column_id: Check Number
+          show_headline: false
+        - column_id: Claim Number
+          show_headline: false
+        - column_id: Claimant Name
+          show_headline: false
+        - column_id: Claimant Status Desc
+          show_headline: false
+        - column_id: Claimant Type Desc
+          show_headline: false
+        - column_id: Day(From Date)
+          show_headline: false
+        - column_id: Day(Loss Date)
+          show_headline: false
+        - column_id: Day(Processed Date)
+          show_headline: false
+        - column_id: Day(Through Date)
+          show_headline: false
+        - column_id: Insured Name
+          show_headline: false
+        - column_id: Insurer Code
+          show_headline: false
+        - column_id: Invoice Number
+          show_headline: false
+        - column_id: Payment Id
+          show_headline: false
+        - column_id: Payment Method Desc
+          show_headline: false
+        - column_id: Payment Type
+          show_headline: false
+        - column_id: Payment Type Id
+          show_headline: false
+        - column_id: Policy Number
+          show_headline: false
+        - column_id: Reserve Type Desc
+          show_headline: false
+        - column_id: Total Payment Amount
+          show_headline: false
+        ordered_column_ids:
+        - Payment Method Desc
+        - Day(Processed Date)
+        - Payment Type
+        - Day(From Date)
+        - Day(Through Date)
+        - Check Number
+        - Claim Number
+        - Insurer Code
+        - Reserve Type Desc
+        - Claimant Name
+        - Policy Number
+        - Day(Loss Date)
+        - Insured Name
+        - Claimant Status Desc
+        - Claimant Type Desc
+        - Invoice Number
+        - Payment Type Id
+        - Payment Id
+        - Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Payment Method Desc","Day(Processed Date)","Payment
+          Type Id","Payment Type","Day(From Date)","Day(Through Date)","Total Payment Amount","Check Number","Claim Number","Insurer
+          Code","Reserve Type Desc","Claimant Name","Policy Number","Day(Loss Date)","Insured Name","Claimant Status Desc","Claimant
+          Type Desc","Invoice Number","Payment Id"],"columnProperties": [{"columnId": "Payment Id","columnProperty": {"isHidden":
+          true}}]}'
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Check Number
+        - column_id: Claim Number
+        - column_id: Claimant Name
+        - column_id: Claimant Status Desc
+        - column_id: Claimant Type Desc
+        - column_id: Day(From Date)
+        - column_id: Day(Loss Date)
+        - column_id: Day(Processed Date)
+        - column_id: Day(Through Date)
+        - column_id: Insured Name
+        - column_id: Insurer Code
+        - column_id: Invoice Number
+        - column_id: Measure names
+          type: MEASURE_NAMES
+        - column_id: Payment Id
+        - column_id: Payment Method Desc
+        - column_id: Payment Type
+        - column_id: Payment Type Id
+        - column_id: Policy Number
+        - column_id: Reserve Type Desc
+        - column_id: Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+          {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+          true}},"columnProperties": [{"columnId": "Payment Method Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure
+          values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Day(Processed Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Payment Type","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Day(From
+          Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Check Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Total Payment Amount","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Claimant Type Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Insurer Code","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Reserve
+          Type Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Insured Name","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Invoice Number","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Claimant Name","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Claim Number","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Policy Number","columnProperty": {"kpiColumnProperties":
+          {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+          true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant
+          Status Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}}],"axisProperties": [{"id": "72a5cede-1dca-4735-9caf-be0573859822","properties":
+          {"axisType": "Y","linkedColumns": ["Total Payment Amount"],"isOpposite": false}},{"id": "52cb0fde-cb6d-4f3a-92b3-543a48b137a2","properties":
+          {"axisType": "X","linkedColumns": ["Payment Method Desc"]}}]}'
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: rows
+            columns:
+            - Payment Method Desc
+            mode: COLUMN_DRIVEN
+          - key: values
+            columns:
+            - Total Payment Amount
+            mode: COLUMN_DRIVEN
+          - key: columns
+            columns:
+            - Measure names
+            mode: COLUMN_DRIVEN
+          - key: split-by-color
+            mode: COLUMN_DRIVEN
+        custom_visual_props: '{}'
+      display_mode: TABLE_MODE
+    viz_guid: e26adfae-7f58-4271-b4d4-28794f9fd6fa
+  - id: Viz_2
+    answer:
+      name: '# Payments'
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      search_query: '[Payment Count] [Payment Type Id] > 0 [Payment Method Id] != 80'
+      answer_columns:
+      - name: Payment Count
+      table:
+        table_columns:
+        - column_id: Payment Count
+          show_headline: false
+        ordered_column_ids:
+        - Payment Count
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1"}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Payment Count
+        axis_configs:
+        - y:
+          - Payment Count
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+          {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+          true}},"columnProperties": [{"columnId": "Measure names","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure values","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}},{"columnId": "Payment Count","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}}],"axisProperties": [{"id": "a57d0ca3-4fd2-4d93-a289-82185d01fc94","properties": {"axisType": "Y","linkedColumns":
+          ["Payment Count"],"isOpposite": false}},{"id": "21bdb9eb-54ed-44a4-9882-3fb0ed3d4ba9","properties": {"axisType":
+          "X"}}]}'
+      display_mode: CHART_MODE
+      dynamic_name: '# Payments'
+    viz_guid: 09840f80-a615-4767-8930-e5471bd45630
+  - id: Viz_3
+    answer:
+      name: Payment Detail - Total Payment Amount
+      tables:
+      - id: Claims - Payments
+        name: Claims - Payments
+        obj_id: Claims-ab0d4cf0
+      search_query: sum [Payment Amount] [Payment Method Id] != 80
+      answer_columns:
+      - name: Total Payment Amount
+        custom_name: Payment Amount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+        dynamic_title: Payment Amount
+      table:
+        table_columns:
+        - column_id: Total Payment Amount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"tableVizPropVersion": "V1","orderedColumnIds": ["Total Payment Amount"]}'
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Total Payment Amount
+        axis_configs:
+        - y:
+          - Total Payment Amount
+        client_state: ''
+        client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}}},"columnProperties":
+          [{"columnId": "Measure names","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+          "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+          true,"showPreviousValue": true}}},{"columnId": "Measure values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+          false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+          true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Total Payment Amount","columnProperty":
+          {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+          true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+          true}}}],"axisProperties": [{"id": "d3f0fe0b-437c-4e52-8ed8-5c722a4effea","properties": {"axisType": "Y","linkedColumns":
+          ["Total Payment Amount"],"isOpposite": false}},{"id": "d6bea8bc-059e-4d01-a25f-499f674c145d","properties": {"axisType":
+          "X"}}]}'
+        custom_visual_props: '{}'
+      display_mode: CHART_MODE
+      dynamic_name: Payment Detail - Total Payment Amount
+    viz_guid: 677c96e6-1dd5-4d00-9e25-13d34bb0c101
+  filters:
+  - column:
+    - Processed Date
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Insurer Code
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - 'Claim #'
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Claimant Name
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Loss Date
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Policy Number
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Claimant Status ID
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Claimant Type Id
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Reserve Type ID
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  - column:
+    - Payment Type Id
+    is_mandatory: false
+    is_single_value: false
+    display_name: ''
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      y: 2
+      height: 13
+      width: 12
+    - visualization_id: Viz_2
+      x: 0
+      y: 0
+      height: 2
+      width: 3
+    - visualization_id: Viz_3
+      x: 3
+      y: 0
+      height: 2
+      width: 3
+  ordered_chips:
+  - name: Processed Date
+    type: FILTER
+  - name: Insurer Code
+    type: FILTER
+  - name: 'Claim #'
+    type: FILTER
+  - name: Claimant Name
+    type: FILTER
+  - name: Loss Date
+    type: FILTER
+  - name: Policy Number
+    type: FILTER
+  - name: Claimant Status ID
+    type: FILTER
+  - name: Claimant Type Id
+    type: FILTER
+  - name: Reserve Type ID
+    type: FILTER
+  - name: Payment Type Id
+    type: FILTER
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: 'false'
+    - name: hide_group_description
+      value: 'true'
+    - name: hide_group_tile_description
+      value: 'false'
+    - name: hide_tile_description
+      value: 'false'
+    - name: kpi_hero_font_size
+      value: M

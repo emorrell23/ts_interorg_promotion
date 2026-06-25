@@ -1,0 +1,117 @@
+obj_id: PotentialDuplicateDetail-cdc06d5e
+answer:
+  name: Potential Duplicate Detail
+  tables:
+  - id: Claims - Payments
+    name: Claims - Payments
+    obj_id: Claims-ab0d4cf0
+  search_query: '[Claim ID] [Claimant ID] [Claim Number] [Loss Date] [Loss Date].daily [Tax ID] [Claimant Name] [Jurisdiction
+    Code] [Line Of Business Desc] [Policy Number] [Vendor Name 1] [First Name] [Last Name]'
+  answer_columns:
+  - name: Claim ID
+  - name: Claim Number
+  - name: Claimant ID
+  - name: Claimant Name
+  - name: Day(Loss Date)
+  - name: First Name
+  - name: Jurisdiction Code
+  - name: Last Name
+  - name: Line Of Business Desc
+  - name: Policy Number
+  - name: Tax ID
+  - name: Vendor Name 1
+  table:
+    table_columns:
+    - column_id: Claim ID
+      show_headline: false
+    - column_id: Claim Number
+      show_headline: false
+    - column_id: Claimant ID
+      show_headline: false
+    - column_id: Claimant Name
+      show_headline: false
+    - column_id: Day(Loss Date)
+      show_headline: false
+    - column_id: First Name
+      show_headline: false
+    - column_id: Jurisdiction Code
+      show_headline: false
+    - column_id: Last Name
+      show_headline: false
+    - column_id: Line Of Business Desc
+      show_headline: false
+    - column_id: Policy Number
+      show_headline: false
+    - column_id: Tax ID
+      show_headline: false
+    - column_id: Vendor Name 1
+      show_headline: false
+    ordered_column_ids:
+    - Claim ID
+    - Claimant ID
+    - Claim Number
+    - Day(Loss Date)
+    - Tax ID
+    - Claimant Name
+    - Jurisdiction Code
+    - Line Of Business Desc
+    - Policy Number
+    - Vendor Name 1
+    - First Name
+    - Last Name
+    client_state: ''
+    client_state_v2: '{"tableVizPropVersion": "V1"}'
+  chart:
+    type: SCATTER
+    chart_columns:
+    - column_id: Claim ID
+    - column_id: Claim Number
+    - column_id: Claimant ID
+    - column_id: Claimant Name
+    - column_id: Day(Loss Date)
+    - column_id: First Name
+    - column_id: Jurisdiction Code
+    - column_id: Last Name
+    - column_id: Line Of Business Desc
+    - column_id: Policy Number
+    - column_id: Tax ID
+    - column_id: Vendor Name 1
+    axis_configs:
+    - x:
+      - Day(Loss Date)
+      y:
+      - Policy Number
+      color:
+      - Line Of Business Desc
+    client_state: ''
+    client_state_v2: '{"version": "V4DOT2","chartProperties": {"chartSpecific": {"pivotSummariesState": {}},"kpiDisplayProperties":
+      {"showChange": true,"showChangeAs": "PERCENT","changeInterpretation": "UPWARD_IS_GOOD","linkChangeColorsWithAnomaly":
+      true}},"columnProperties": [{"columnId": "Claim ID","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant ID","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+      true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claim Number","columnProperty":
+      {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+      true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId":
+      "Day(Loss Date)","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+      "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+      true,"showPreviousValue": true}}},{"columnId": "Tax ID","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Claimant Name","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+      true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Jurisdiction
+      Code","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData":
+      "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue":
+      true}}},{"columnId": "Line Of Business Desc","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate":
+      false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel":
+      true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Policy Number","columnProperty": {"kpiColumnProperties":
+      {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate":
+      true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId": "Measure names","columnProperty":
+      {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate": "","handleNullData": "ZERO","showSparkline":
+      true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel": true,"showPreviousValue": true}}},{"columnId":
+      "Measure values","columnProperty": {"kpiColumnProperties": {"showAbbreviatedPreviousDate": false,"abbreviatedPreviousDate":
+      "","handleNullData": "ZERO","showSparkline": true,"showComparisonDate": true,"showCurrentDateLabel": true,"showPreviousDateLabel":
+      true,"showPreviousValue": true}}}],"axisProperties": [{"id": "aedceedf-aa68-4afa-9637-21564fb4e220","properties": {"axisType":
+      "Y","linkedColumns": ["Policy Number"],"isOpposite": false}},{"id": "96d0b3bd-c4e7-42c9-9fcf-b8b2c6560d5e","properties":
+      {"axisType": "X","linkedColumns": ["Day(Loss Date)"]}}]}'
+  display_mode: TABLE_MODE

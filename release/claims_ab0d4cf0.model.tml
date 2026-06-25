@@ -1,0 +1,684 @@
+obj_id: Claims-ab0d4cf0
+model:
+  name: Claims - Payments
+  description: Star schema for Claims reporting that use the Fact Claim Payment fact table only. Also contains associated
+    dimensions. Used for a majority of claims reporting.
+  model_tables:
+  - name: FACT_CLAIM_PAYMENT
+    joins:
+    - with: DIM_ADDRESS_BOOK_PAYEE_CALC_ONLY
+      'on': '[FACT_CLAIM_PAYMENT::ENTITY_ID] = [DIM_ADDRESS_BOOK::ADDRESS_BOOK_ID]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_BANK_ACCOUNT
+      'on': '[FACT_CLAIM_PAYMENT::BANK_ACCOUNT_KEY] = [DIM_BANK_ACCOUNT::BANK_ACCOUNT_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_CLAIMANT_CURRENT
+      'on': '[FACT_CLAIM_PAYMENT::CLAIMANT_SCD2_KEY] = [DIM_CLAIMANT_CURRENT::CLAIMANT_SCD2_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_CLAIM_CURRENT
+      'on': '[FACT_CLAIM_PAYMENT::CLAIM_SCD2_KEY] = [DIM_CLAIM_CURRENT::CLAIM_SCD2_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_INSURED_PAYEE_CALC_ONLY
+      'on': '[FACT_CLAIM_PAYMENT::ENTITY_ID] = [DIM_INSURED::INSURED_ID]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_INSURER_PAYEE_CALC_ONLY
+      'on': '[FACT_CLAIM_PAYMENT::ENTITY_ID] = [DIM_INSURER::INSURER_ID]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_LINE_OF_BUSINESS
+      'on': '[FACT_CLAIM_PAYMENT::LINE_OF_BUSINESS_KEY] = [DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_PAYEE
+      'on': '[FACT_CLAIM_PAYMENT::CLAIM_PAYMENT_KEY] = [DIM_PAYEE::PAYMENT_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_PAYMENT_METHOD
+      'on': '[FACT_CLAIM_PAYMENT::PAYMENT_METHOD_KEY] = [DIM_PAYMENT_METHOD::PAYMENT_METHOD_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_PAYMENT_TYPE
+      'on': '[FACT_CLAIM_PAYMENT::PAYMENT_TYPE_KEY] = [DIM_PAYMENT_TYPE::PAYMENT_TYPE_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_POLICY
+      'on': '[FACT_CLAIM_PAYMENT::POLICY_KEY] = [DIM_POLICY::POLICY_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIM_RESERVE_TYPE
+      'on': '[FACT_CLAIM_PAYMENT::RESERVE_TYPE_KEY] = [DIM_RESERVE_TYPE::RESERVE_TYPE_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    obj_id: FACT_CLAIM_PAYMENT-df2767a3
+  - name: DIM_CLAIMANT_CURRENT
+    obj_id: DIM_CLAIMANT_CURRENT-9a0aed7a
+  - name: DIM_PAYMENT_TYPE
+    obj_id: DIM_PAYMENT_TYPE-5e7a6930
+  - name: DIM_POLICY
+    obj_id: DIM_POLICY-a0674bf4
+  - name: DIM_BANK_ACCOUNT
+    obj_id: DIM_BANK_ACCOUNT-f1ae14ff
+  - name: DIM_INSURED
+    alias: DIM_INSURED_PAYEE_CALC_ONLY
+    obj_id: DIM_INSURED-3935196b
+  - name: DIM_INSURER
+    alias: DIM_INSURER_PAYEE_CALC_ONLY
+    obj_id: DIM_INSURER-7deb435f
+  - name: DIM_ADDRESS_BOOK
+    alias: DIM_ADDRESS_BOOK_PAYEE_CALC_ONLY
+    obj_id: DIM_ADDRESS_BOOK-a3777fc9
+  - name: DIM_LINE_OF_BUSINESS
+    obj_id: DIM_LINE_OF_BUSINESS-98dd8f2d
+  - name: DIM_CLAIM_CURRENT
+    joins:
+    - with: DIM_USER
+      'on': '[DIM_CLAIM_CURRENT::EXAMINER_USER_KEY] = [DIM_USER::USER_KEY]'
+      type: LEFT_OUTER
+      cardinality: MANY_TO_ONE
+    obj_id: DIM_CLAIM_CURRENT-ab704eb1
+  - name: DIM_PAYMENT_METHOD
+    obj_id: DIM_PAYMENT_METHOD-e1ebbdc5
+  - name: DIM_RESERVE_TYPE
+    obj_id: DIM_RESERVE_TYPE-2cb573b7
+  - name: DIM_PAYEE
+    obj_id: DIM_PAYEE-5e745b44
+  - name: DIM_USER
+    obj_id: DIM_USER-d00f59dd
+  formulas:
+  - id: 'formula_Claim #'
+    name: 'Claim #'
+    expr: if ( count ( [formula_Payee] ) > 1 and max ( if ( [FACT_CLAIM_PAYMENT::PAYEE_TYPE_CODE] = "C" ) then 1 else 0 )
+      = 1 ) then "Combined" else max ( [FACT_CLAIM_PAYMENT::CLAIM_NUMBER] )
+  - id: formula_Claimant First And Last Name
+    name: Claimant First And Last Name
+    expr: if ( ( [DIM_CLAIMANT_CURRENT::FIRST_NAME] = [ClaimantFirstName] and [DIM_CLAIMANT_CURRENT::LAST_NAME] = [ClaimantLastName]
+      ) or ( [ClaimantFirstName] = 'null' and [ClaimantLastName] = 'null' ) ) then true else false
+  - id: formula_Good Payment
+    name: Good Payment
+    expr: ifnull ( ( not [DIM_PAYEE::IS_ADDRESS_INVALID] and not [DIM_PAYEE::IS_ACCOUNT_OVERDRAWN] and not [DIM_PAYEE::IS_RESERVES_EXCEEDED]
+      and not [DIM_PAYEE::IS_BLOCKED_VENDOR] and not [DIM_PAYEE::IS_NO_ACCOUNT] and not [DIM_PAYEE::IS_CLAIM_VERIFICATION_BLOCK]
+      and ifnull ( [DIM_PAYEE::FLAG_ACH] , '' ) = '' ) or ( not [DIM_PAYEE::IS_EMAIL_INVALID] and not [DIM_PAYEE::IS_PHONE_INVALID]
+      ) , true )
+  - id: formula_Injury Location
+    name: Injury Location
+    expr: concat ( [DIM_CLAIM_CURRENT::INJURY_ADDRESS1] , ' ' , if ( strlen ( [DIM_CLAIM_CURRENT::INJURY_ADDRESS2] ) > 0 )
+      then [DIM_CLAIM_CURRENT::INJURY_ADDRESS2] else '' , ' ' , [DIM_CLAIM_CURRENT::INJURY_CITY] , ', ' , [DIM_CLAIM_CURRENT::INJURY_STATE]
+      , ' ' , [DIM_CLAIM_CURRENT::INJURY_ZIP_CODE] )
+  - id: formula_Insured Location
+    name: Insured Location
+    expr: concat ( [DIM_POLICY::INSURED_ADDRESS_1] , ' ' , [DIM_POLICY::INSURED_CITY] , ', ' , [DIM_POLICY::INSURED_STATE]
+      , ' ' , [DIM_POLICY::INSURED_ZIP_CODE] )
+  - id: formula_Is Jurisdiction CA
+    name: Is Jurisdiction CA
+    expr: if ( [DIM_CLAIM_CURRENT::JURISDICTION_CODE] = 'CA' ) then true else false
+  - id: formula_OFac
+    name: OFac
+    expr: ifnull ( [DIM_PAYEE::IS_OFAC_MATCH] , false )
+  - id: formula_Payee (Max)
+    name: Payee (Max)
+    expr: max ( [formula_Payee]  )
+  - id: formula_Payee
+    name: Payee
+    expr: 'if ( [FACT_CLAIM_PAYMENT::PAYEE_TYPE_CODE] = "R" ) then [DIM_INSURER_PAYEE_CALC_ONLY::INSURER_NAME_1] else if (
+      [FACT_CLAIM_PAYMENT::PAYEE_TYPE_CODE] = "D" ) then [DIM_POLICY::INSURED_NAME_1] else if ( [FACT_CLAIM_PAYMENT::PAYEE_TYPE_CODE]
+      = "C" ) then [DIM_CLAIMANT_CURRENT::CLAIMANT_NAME] else [DIM_CLAIMANT_CURRENT::CLAIMANT_NAME] '
+  - id: formula_Payment Count
+    name: Payment Count
+    expr: count ( [FACT_CLAIM_PAYMENT::PAYMENT_ID] )
+  columns:
+  - name: Claim ID
+    column_id: DIM_CLAIM_CURRENT::CLAIM_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Payee
+    formula_id: formula_Payee
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Payee (Max)
+    formula_id: formula_Payee (Max)
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: 'Claim #'
+    formula_id: 'formula_Claim #'
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Good Payment
+    formula_id: formula_Good Payment
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: OFac
+    formula_id: formula_OFac
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant First And Last Name
+    formula_id: formula_Claimant First And Last Name
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Injury Location
+    formula_id: formula_Injury Location
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Insured Location
+    formula_id: formula_Insured Location
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Is Jurisdiction CA
+    formula_id: formula_Is Jurisdiction CA
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: First Name
+    column_id: DIM_CLAIMANT_CURRENT::FIRST_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Last Name
+    column_id: DIM_CLAIMANT_CURRENT::LAST_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payment Id
+    column_id: FACT_CLAIM_PAYMENT::PAYMENT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Jurisdiction Code
+    column_id: DIM_CLAIM_CURRENT::JURISDICTION_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Entity Id
+    column_id: FACT_CLAIM_PAYMENT::ENTITY_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Birth Date
+    column_id: DIM_CLAIMANT_CURRENT::BIRTH_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Injury County
+    column_id: DIM_CLAIM_CURRENT::INJURY_COUNTY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Cause Id
+    column_id: DIM_CLAIM_CURRENT::INJURY_CAUSE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claim Valid From
+    column_id: DIM_CLAIM_CURRENT::VALID_FROM
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Valid From
+    column_id: DIM_CLAIMANT_CURRENT::VALID_FROM
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claim Valid To
+    column_id: DIM_CLAIM_CURRENT::VALID_TO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Valid To
+    column_id: DIM_CLAIMANT_CURRENT::VALID_TO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Hire Date
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_HIRE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Injury Address1
+    column_id: DIM_CLAIM_CURRENT::INJURY_ADDRESS1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Address2
+    column_id: DIM_CLAIM_CURRENT::INJURY_ADDRESS2
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury City
+    column_id: DIM_CLAIM_CURRENT::INJURY_CITY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury State
+    column_id: DIM_CLAIM_CURRENT::INJURY_STATE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Zip Code
+    column_id: DIM_CLAIM_CURRENT::INJURY_ZIP_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Desc
+    column_id: DIM_CLAIMANT_CURRENT::INJURY_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Nature Of Injury Desc
+    column_id: DIM_CLAIMANT_CURRENT::NATURE_OF_INJURY_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Nature Of Injury Id
+    column_id: DIM_CLAIMANT_CURRENT::NATURE_OF_INJURY_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Insured Address 1
+    column_id: DIM_POLICY::INSURED_ADDRESS_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured City
+    column_id: DIM_POLICY::INSURED_CITY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured State
+    column_id: DIM_POLICY::INSURED_STATE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insured Zip Code
+    column_id: DIM_POLICY::INSURED_ZIP_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Injury Cause Desc
+    column_id: DIM_CLAIM_CURRENT::INJURY_CAUSE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Body Part Desc
+    column_id: DIM_CLAIMANT_CURRENT::BODY_PART_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Body Part ID
+    column_id: DIM_CLAIMANT_CURRENT::BODY_PART_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Closed Date
+    column_id: DIM_CLAIMANT_CURRENT::CLOSED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Litigated
+    column_id: DIM_CLAIMANT_CURRENT::LITIGATED
+    properties:
+      column_type: ATTRIBUTE
+  - name: PD Rating
+    column_id: DIM_CLAIMANT_CURRENT::PD_RATING
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Occupation Desc
+    column_id: DIM_CLAIMANT_CURRENT::OCCUPATION_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Avg Weekly Wage
+    column_id: DIM_CLAIMANT_CURRENT::AVG_WEEKLY_WAGE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Class Code
+    column_id: DIM_CLAIM_CURRENT::CLASS_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Flag Ach
+    column_id: DIM_PAYEE::FLAG_ACH
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Account Overdrawn
+    column_id: DIM_PAYEE::IS_ACCOUNT_OVERDRAWN
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Address Invalid
+    column_id: DIM_PAYEE::IS_ADDRESS_INVALID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Blocked Vendor
+    column_id: DIM_PAYEE::IS_BLOCKED_VENDOR
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Claim Verification Block
+    column_id: DIM_PAYEE::IS_CLAIM_VERIFICATION_BLOCK
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Email Invalid
+    column_id: DIM_PAYEE::IS_EMAIL_INVALID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is No Account
+    column_id: DIM_PAYEE::IS_NO_ACCOUNT
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Ofac Match
+    column_id: DIM_PAYEE::IS_OFAC_MATCH
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Phone Invalid
+    column_id: DIM_PAYEE::IS_PHONE_INVALID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Reserves Exceeded
+    column_id: DIM_PAYEE::IS_RESERVES_EXCEEDED
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payee Name 1
+    column_id: DIM_PAYEE::PAYEE_NAME_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payee Name 2
+    column_id: DIM_PAYEE::PAYEE_NAME_2
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Type Id
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_TYPE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Examiner Code
+    column_id: DIM_CLAIM_CURRENT::EXAMINER_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payee Type Code
+    column_id: DIM_PAYEE::PAYEE_TYPE_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payee Name
+    column_id: DIM_PAYEE::PAYEE_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Last Check Number
+    column_id: DIM_BANK_ACCOUNT::LAST_CHECK_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Policy Period Id
+    column_id: DIM_POLICY::POLICY_PERIOD_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Id
+    column_id: DIM_POLICY::POLICY_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Jurisdiction Code
+    column_id: DIM_POLICY::JURISDICTION_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payment Method Id
+    column_id: DIM_PAYMENT_METHOD::PAYMENT_METHOD_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: From Date
+    column_id: FACT_CLAIM_PAYMENT::FROM_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Through Date
+    column_id: FACT_CLAIM_PAYMENT::THROUGH_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Reserve Type Desc
+    column_id: DIM_RESERVE_TYPE::RESERVE_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Policy Number
+    column_id: DIM_POLICY::POLICY_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Loss Date
+    column_id: DIM_CLAIM_CURRENT::LOSS_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Insured Name
+    column_id: DIM_POLICY::INSURED_NAME_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Type Desc
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payment Type Id
+    column_id: DIM_PAYMENT_TYPE::PAYMENT_TYPE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Payment Method Desc
+    column_id: DIM_PAYMENT_METHOD::PAYMENT_METHOD_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Approval Date
+    column_id: FACT_CLAIM_PAYMENT::APPROVAL_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Claim Number
+    column_id: DIM_CLAIM_CURRENT::CLAIM_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Status Desc
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_STATUS_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Payment Type
+    column_id: DIM_PAYMENT_TYPE::PAYMENT_TYPE_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Account Number
+    column_id: DIM_BANK_ACCOUNT::ACCOUNT_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Billed Amount
+    column_id: FACT_CLAIM_PAYMENT::BILLED_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Check Amount
+    column_id: FACT_CLAIM_PAYMENT::CHECK_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Cleared Date
+    column_id: FACT_CLAIM_PAYMENT::CLEARED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Deductions
+    column_id: FACT_CLAIM_PAYMENT::DEDUCTIONS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Deleted Date
+    column_id: FACT_CLAIM_PAYMENT::DELETED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Effective Check Date
+    column_id: FACT_CLAIM_PAYMENT::EFFECTIVE_CHECK_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Invoice Date
+    column_id: FACT_CLAIM_PAYMENT::INVOICE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Invoice Number
+    column_id: FACT_CLAIM_PAYMENT::INVOICE_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Invoice Received Date
+    column_id: FACT_CLAIM_PAYMENT::INVOICE_RECEIVED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Payment Amount
+    column_id: FACT_CLAIM_PAYMENT::PAYMENT_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Payment Entry Date
+    column_id: FACT_CLAIM_PAYMENT::PAYMENT_ENTRY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Payment Run Date
+    column_id: FACT_CLAIM_PAYMENT::PAYMENT_RUN_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Processed Date
+    column_id: FACT_CLAIM_PAYMENT::PROCESSED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Void Date
+    column_id: FACT_CLAIM_PAYMENT::VOID_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Line Of Business Code
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Line Of Business Desc
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_DESC
+    properties:
+      column_type: ATTRIBUTE
+  - name: Line Of Business ID
+    column_id: DIM_LINE_OF_BUSINESS::LINE_OF_BUSINESS_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Check Number
+    column_id: FACT_CLAIM_PAYMENT::CHECK_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant ID
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Claimant Name
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Insurer Code
+    column_id: DIM_POLICY::INSURER_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Previous Payment Method Id
+    column_id: FACT_CLAIM_PAYMENT::PREVIOUS_PAYMENT_METHOD_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Tax ID
+    column_id: DIM_ADDRESS_BOOK_PAYEE_CALC_ONLY::TAX_ID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Claimant Status ID
+    column_id: DIM_CLAIMANT_CURRENT::CLAIMANT_STATUS_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Reserve Type ID
+    column_id: DIM_RESERVE_TYPE::RESERVE_TYPE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Policy Inception Date
+    column_id: DIM_POLICY::POLICY_INCEPTION_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Policy Expiration Date
+    column_id: DIM_POLICY::POLICY_EXPIRATION_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      default_date_bucket: DAILY
+  - name: Payment Run Key
+    column_id: DIM_PAYEE::PAYMENT_RUN_KEY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Vendor Name 1
+    column_id: DIM_CLAIMANT_CURRENT::VENDOR_NAME_1
+    properties:
+      column_type: ATTRIBUTE
+  - name: Office Code
+    column_id: DIM_USER::OFFICE_CODE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Manager
+    column_id: DIM_USER::MANAGER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Office Id
+    column_id: DIM_USER::OFFICE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Payment Count
+    formula_id: formula_Payment Count
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: false
+  parameters:
+  - id: 68b073fa-fc5e-49d9-a5e7-df1b4c37606e
+    name: Begin Date
+    data_type: DATE
+    default_value: 01/01/2000
+    description: ''
+  - id: 84c3b537-b9a2-409b-9b49-cc430bcf563a
+    name: ClaimantFirstName
+    data_type: CHAR
+    default_value: 'null'
+    description: ''
+  - id: 0848b399-27bd-4865-91f7-8352d4cf2d10
+    name: ClaimantLastName
+    data_type: CHAR
+    default_value: 'null'
+    description: ''
+  - id: 27bfc563-1f6f-4a8c-9756-fbf343c8037e
+    name: End Date
+    data_type: DATE
+    default_value: 12/31/2050
+    description: ''
